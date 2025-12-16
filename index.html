@@ -1,1351 +1,790 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- ========== Meta Tags ========== -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="description" content="An experienced web developer specializing in creating stunning and functional websites. Skilled in HTML, CSS, JavaScript, and responsive design.">
-    <meta name="Keywords" content="Web development, Website design, Custom web development, Responsive web design, Front-end development, Back-end development, Full-stack development,  Web application development, E-commerce website development, WordPress development, Drupal development, Joomla development, Magento development, Shopify development, Mobile app development, UI/UX design, HTML/CSS development,  JavaScript development, PHP development, Python development, Ruby on Rails development, Node.js development, Angular development,   React development, Vue.js development, API development, Content management systems (CMS), Search engine optimization (SEO),  Website optimization, User experience (UX), Website speed optimization, Mobile-friendly design, Cross-browser compatibility, Web security, Website maintenance, Website hosting, Domain registration, Web analytics, Responsive images,Structured data markup">
-    <meta http-equiv = "content-language" content = "en">
-    <meta http-equiv="expires" content="Sun, 01 Jan 2014 00:00:00 GMT"/>
-    <meta http-equiv="pragma" content="no-cache" />
-    <meta name="ahrefs-site-verification" content="9b7a8ab0d9c604e490a071ae76ad069148fef8b74735ab7c3214e1e5ca169135">
-    	  	<!-- Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#001638c7">
-        <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#001638c7">
-        <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="#001638c7">
-    
-
-    <!--Social media tags -->
- <meta property="og:title" content="John Rua | Personal Portfolio">
- <meta property="og:description" content="An experienced web developer specializing in creating stunning and functional websites. Skilled in HTML, CSS, JavaScript, and responsive design.">
- <meta property="og:image" content="https://johnrua.com/assets/img/192_200x200.png">
- <meta property="og:image:width" content="200" />
- <meta property="og:image:height" content="200" />
- <meta property="og:image:type" content="image/png" />
- <meta property="og:image:alt" content="John Rua Developer" />
- <meta property="og:url" content="https://johnrua.com/">
- <meta property="og:type" content="website" />
- <meta property="og:locale" content="en_GB" />
- <meta property="og:site_name" content="JohnRuaDeveloper" />
-
- <!--Twitter cards -->
- <meta name="twitter:card" content="summary_large_image">
- <meta name="twitter:site" content="@JohnRuaDeveloper" />
- <meta name="twitter:title" content="John Rua | Personal Portfolio">
- <meta name="twitter:description" content="An experienced web developer specializing in creating stunning and functional websites. Skilled in HTML, CSS, JavaScript, and responsive design.">
- <meta name="twitter:image" content="https://johnrua.com/assets/img/John-Rua.png">
-
-    <link rel="manifest" href="manifest.json" />
-
-    <!-- ========== Page Title ========== -->
-    <title>John Rua - Personal Portfolio </title>
-
-    <!-- ========== Favicon Icon ========== -->
-    <!-- favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/JRicon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/JRicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/JRicon.png">
-    <link rel="manifest" href="site.webmanifest">
-
-    <link rel="shortcut icon" href="assets/img/JRicon.png" type="image/x-icon">
-
-    <!-- ========== Start Stylesheet ========== -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/themify-icons.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/elegant-icons.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/flaticon-set.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/magnific-popup.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/swiper-bundle.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/animate.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/validnavs.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/helper.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/unit-test.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YNMWKN16DF"></script>
-
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YNMWKN16DF');
-</script>
-
-<script src="https://www.google.com/recaptcha/api.js?render=6LfEOwQmAAAAAMQtiSyP5yXz_kzyVp3otYjCDYfb"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Rua | Full Stack Developer</title>
     <style>
-        @media only screen and (max-width:600px){
-            .alignwide {
-               width: 86% !important;
-            }
-            }
-            @media only screen and (max-width:960px){
-            .alignwide {
-               width: 80% !important;
-            }
-            }
-            @media only screen and (max-width:990px){
-            .alignwide {
-               width: 81% !important;
-               margin-left: 2em;
-            }
-            }
-            @media only screen and (max-width: 1021px) {
-            .alignwide {
-                width: 81% !important;
-                margin-left: 0em;
-            }
-            }
-
-            #badge-name {
-            color: #fff;
-            }
-
-            #badge-issuer {
-            color: #fff;
-            }
-    </style>
-
-    <!-- ========== End Stylesheet ========== -->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="assets/js/html5/html5shiv.min.js"></script>
-      <script src="assets/js/html5/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body class="bg-fixed dark-layout" style="background-image: url(assets/img/shape/banner-2.jpg);">
-
-    <!-- Start Preloader 
-    ============================================= -->
-    <div id="preloader">
-        <div id="ambrox-preloader" class="ambrox-preloader">
-            <div class="animation-preloader">
-                <div class="spinner"></div>
-                <div class="txt-loading">
-                    <span data-text-preloader="J" class="letters-loading">
-                        J
-                    </span>
-                    <span data-text-preloader="O" class="letters-loading">
-                        O
-                    </span>
-                    <span data-text-preloader="H" class="letters-loading">
-                        H
-                    </span>
-                    <span data-text-preloader="N" class="letters-loading">
-                        N
-                    </span>
-                    <span data-text-preloader="R" class="letters-loading">
-                        R
-                    </span>
-                    <span data-text-preloader="U" class="letters-loading">
-                        U
-                    </span>
-                    <span data-text-preloader="A" class="letters-loading">
-                        A
-                    </span>
-                </div>
-            </div>
-            <div class="loader">
-                <div class="row">
-                    <div class="col-3 loader-section section-left">
-                        <div class="bg"></div>
-                    </div>
-                    <div class="col-3 loader-section section-left">
-                        <div class="bg"></div>
-                    </div>
-                    <div class="col-3 loader-section section-right">
-                        <div class="bg"></div>
-                    </div>
-                    <div class="col-3 loader-section section-right">
-                        <div class="bg"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Preloader -->
-
-
-    <!-- Header 
-    ============================================= -->
-    <header id="home">
-        <!-- Start Navigation -->
-        <nav class="navbar mobile-sidenav onepage-menu mobile-nav-only attr-border navbar-sticky navbar-default validnavs navbar-fixed dark no-background">
-
-
-            <div class="container d-flex justify-content-between align-items-center">            
-
-                <!-- Start Header Navigation -->
-                <div class="navbar-header">
-                    <button type="button" aria-label="navbar-menu" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" href="index.html">
-                        <img src="assets/img/John-Rua.png" class="logo" alt="Logo">
-                    </a>
-                </div>
-                <!-- End Header Navigation -->
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-menu">
-
-                    <img src="assets/img/transparent_img.png" alt="Logo" class="mobilelogo">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" aria-label="navbar-menu" data-target="#navbar-menu">
-                        <i class="fa fa-times"></i>
-                    </button>
-                    
-                    <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li>
-                            <a class="smooth-menu"   data-toggle="collapse" data-target=".navbar-collapse.show" aria-label="home"  href="#home">Home</a>
-                        </li>
-                        <li>
-                            <a class="smooth-menu"  data-toggle="collapse" data-target=".navbar-collapse.show" aria-label="services"  href="#services">services</a>
-                        </li>
-                        <li>
-                            <a class="smooth-menu"  data-toggle="collapse" data-target=".navbar-collapse.show" aria-label="portfolio"  href="#portfolio">portfolio</a>
-                        </li>
-                        <li>
-                            <a class="smooth-menu"  data-toggle="collapse" data-target=".navbar-collapse.show" aria-label="about"  href="#about">about</a>
-                        </li>
-                        <li>
-                            <a class="smooth-menu"  data-toggle="collapse" data-target=".navbar-collapse.show" aria-label="blog"  href="#blog">blog</a>
-                        </li>
-                        <li>
-                            <a class="smooth-menu"  data-toggle="collapse" data-target=".navbar-collapse.show" aria-label="contact"  href="#contact">contact</a>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-
-                <!-- Main Nav -->
-            </div>   
-            <!-- Overlay screen for menu -->
-            <div class="overlay-screen"></div>
-            <!-- End Overlay screen for menu -->
-        </nav>
-        <!-- End Navigation -->
-    </header>
-    <!-- End Header -->
-
-    <!-- Start Header Fixed 
-    ============================================= -->
-    <header class="header-fixed">
-        <div class="f-flex">
-            <div class="logo">
-                <a href="#home"><img src="assets/img/JR.png" alt="Logo"></a>
-            </div>
-            <div class="menu">
-                <ul class="nav">
-                    <li>
-                        <a class="smooth-menu" href="#home" aria-label="home">
-                            <i class="fas fa-home"></i>
-                            <div class="menu-name">Home</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="smooth-menu" href="#services" aria-label="services">
-                            <i class="fas fa-cog"></i>
-                            <div class="menu-name">Services</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="smooth-menu" href="#portfolio" aria-label="portfolio">
-                            <i class="fas fa-briefcase"></i>
-                            <div class="menu-name">Portfolio</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="smooth-menu" href="#about" aria-label="about">
-                            <i class="fas fa-user"></i>
-                            <div class="menu-name">About</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="smooth-menu" href="#resume" aria-label="resume">
-                            <i class="fas fa-file-alt"></i>
-                            <div class="menu-name">Resume</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="smooth-menu" href="#blog" aria-label="blog">
-                            <i class="far fa-edit"></i>
-                            <div class="menu-name">Blog</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="smooth-menu" href="#contact" aria-label="contact">
-                            <i class="fas fa-comments"></i>
-                            <div class="menu-name">Contact</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="video">
-                <!--<a href="https://www.youtube.com/watch?v=5qRsGTuy3Rs" class="popup-youtube video-play-button theme">
-                    <i class="fas fa-play"></i>
-                </a>-->
-            </div>
-        </div>
-    </header>
-    <!-- End Header Fixed -->
-
-   <!-- Start Banner 
-    ============================================= -->
-    <div class="auto-height bg-fixed banner-style-one">
-        <div class="container">
-            <div class="double-items">
-                <div class="row align-center">
-
-                    <div class="col-lg-6 info">
-                        <h1>WELCOME</h1>
-                        <h2>Hey <img src="assets/img/shape/4.png" alt="Icon"> I'm <span>John</span></h2>
-                        <h3 class="title">
-                            <span class="header-caption" id="page-top">
-                                <!-- type headline start-->
-                                <span class="cd-headline clip is-full-width">
-                                    <!-- ROTATING TEXT -->
-                                    <span class="cd-words-wrapper">
-                                        <b class="is-visible">Full Stack Developer</b>
-                                        <b class="is-hidden">Web Developer</b>
-                                        <b class="is-hidden">Software Developer</b>
-                                    </span>
-                                </span>
-                                <!-- type headline end -->
-                            </span>
-                        </h3>
-                        <div class="button mt-55">
-                            <a class="btn btn-md circle btn-theme effect" href="#resume">My Resume</a>
-                        </div>
-                    </div>
-
-                     <div class="col-lg-6 thumb" data-wow-delay="900ms">
-                        <img class=" wow fadeInDown" src="assets/img/illustration/kennynpower4web_700x960-removebg-preview_1_700x961.png" alt="Thumb">
-                        <div class="shape-center">
-                            <img src="assets/img/shape/7.png" alt="Thumb">
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="personal-social">
-                    <ul>
-                        <li class="linkedin">
-                            <a target="_blank" rel="canonical" aria-label="linkedin"  href="https://www.linkedin.com/in/john-rua-1b01378a/">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                        </li>
-                        <li class="github">
-                            <a target="_blank" rel="canonical" aria-label="github"  href="https://github.com/JRua89">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </li>
-                        <li class="google">
-                            <a target="_blank" rel="canonical" aria-label="google-play"  href="https://play.google.com/store/apps/dev?id=7205864981443481452">
-                                <i class="fab fa-google-play"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Banner -->
-
-    <!-- Start Services
-    ============================================= -->
-    <div id="services" class="services-style-one-area box-layout default-padding bottom-less bg-light">
-        <div class="blur-bg"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="site-heading text-center">
-                        <h4 class="sub-title">My Expertise</h4>
-                        <h2 class="title">What I Do </h2>
-                        <div class="devider"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <!-- Single Item -->
-                <div class="service-style-one col-lg-4 col-md-6">
-                    <div class="service-style-one-item">
-                        <img src="assets/img/icon/1.png" alt="Icon">
-                        <h4><a href="#" data-bs-toggle="modal" data-bs-target="#serviceSingleModal">Website design</a></h4>
-                        <p>
-                            As a website designer, my passion lies in creating captivating and user-friendly online experiences. I meticulously craft visually stunning layouts that not only reflect the brand identity but also engage and resonate with the target audience. Through a combination of thoughtful typography, color palettes, and imagery, I strive to evoke emotions and convey the intended message effectively.
-                        </p>
-                    </div>
-                </div>
-                <!-- End Single Item -->
-                <!-- Single Item -->
-                <div class="service-style-one col-lg-4 col-md-6">
-                    <div class="service-style-one-item">
-                        <img src="assets/img/icon/2.png" alt="Icon">
-                        <h4><a href="#" data-bs-toggle="modal" data-bs-target="#serviceSingleModal">App Development</a></h4>
-                        <p>
-                            In my role as an app developer, I am passionate about designing and building cutting-edge mobile applications. With a keen eye for user experience, I strive to create seamless and intuitive interfaces that captivate users from the moment they launch the app. Leveraging my expertise in programming languages and frameworks, I meticulously craft robust functionalities, ensuring optimal performance and scalability.
-                        </p>
-                    </div>
-                </div>
-                <!-- End Single Item -->
-                <!-- Single Item -->
-                <div class="service-style-one col-lg-4 col-md-6">
-                    <div class="service-style-one-item">
-                        <img src="assets/img/icon/4.png" alt="Icon">
-                        <h4><a href="#" data-bs-toggle="modal" data-bs-target="#serviceSingleModal">UX/UI Design</a></h4>
-                        <p>
-                            In my role as a UX/UI designer, I am dedicated to crafting exceptional digital experiences that seamlessly blend usability, aesthetics, and user satisfaction. Through extensive research and user testing, I deeply understand the needs, goals, and behaviors of the target audience. This knowledge guides me in designing intuitive and user-centered interfaces that enhance engagement and streamline interactions.
-                        </p>
-                    </div>
-                </div>
-                <!-- End Single Item -->
-            </div>
-        </div>
-        
-
-
-    </div>
-    <!-- End Services -->
-
-    <!-- Start Portfolio 
-    ============================================= -->
-    <div id="portfolio" class="portfolio-style-six-area default-padding-top">
-        <div class="shape-animated-right">
-            <img src="assets/img/shape/1.webp" alt="Shape">
-        </div>
-        
-        <div class="container">
-            <div class="heading-left">
-                <div class="row align-center">
-                    <div class="col-lg-5">
-                        <div class="left-info">
-                            <h5 class="sub-title">Recent Work</h5>
-                            <h2 class="title">Look at my portfolio</h2>
-                            <div class="heading-shape">
-                                <img src="assets/img/shape/10.png" alt="Shape">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 offset-lg-1">
-                        <div class="right-info">
-                            <div class="fun-factor-default">
-                                <div class="fun-fact">
-                                    <div class="counter">
-                                        <div class="timer" data-to="5" data-speed="2000">5</div>
-                                        <!--<div class="operator">K</div>-->
-                                    </div>
-                                    <span class="medium">Completed Project</span>
-                                </div>
-                                <!--<div class="fun-fact">
-                                    <div class="counter">
-                                        <div class="timer" data-to="94" data-speed="2000">94</div>
-                                        <div class="operator">%</div>
-                                    </div>
-                                    <span class="medium">Positive Rating</span>
-                                </div>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 gallery-content mb--15">
-                    <div class="magnific-mix-gallery masonary">
-                        <div id="portfolio-grid" class="gallery-items colums-3">
-                            <!-- Single Item -->
-                            <div id="porfolioData"></div>
-                             <!-- Single Item -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Start Projects Single Modal INSIDE KBCC -->
-        <div class="modal fade" id="portfolioModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-                <div class="modal-content">
-                    <div class="modal-body">
-
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                            <style>
-                                .fade-in-image { animation: fadeIn 2s; }
-                                @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-                            </style>
-                        <div class="project-details-items fade-in-image">
-                            <div class="project-thumb ">
-                                <div id="ModalDataImg"></div>
-                                <!--<img src="assets/img/Screenshot_2023-05-15_112958_800x600_1500x700.png" alt="Thumb">-->
-                            </div>
-                            <div class="top-info">
-                                <div class="row">
-                                    <div class="col-xl-12 left-info">
-                                        <div class="project-info mt-md-50 mt-xs-40 mb-40">
-                                            <div class="content">
-                                                <ul class="project-basic-info">
-                                                    <li>
-                                                        Client <span><div id="ModalDataClient"></div></span>
-                                                    </li>
-                                                    <li>
-                                                        Project Type <span><div id="ModalDataType"></div></span>
-                                                    </li>
-                                                    <li>
-                                                        Date <span><div id="ModalDataDate"></div></span>
-                                                    </li>
-                                                    <li>
-                                                        Address <span><div id="ModalDataAddress"></div></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="social">
-                                                    <li>
-                                                        <h4>Link:</h4>
-                                                    </li>
-                                                    <span>
-                                                        <div id="ModalDataLink"></div>
-                                                    </span>
-                                                   
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <h2><div id="ModalDatabodyTitle"></div></h2>
-                                        
-                                        
-                                        <div id="ModalDataBody"></div>
-
-
-                                       
-                                    </div>
-                                </div>
-                            </div>
-            
-                            <div class="main-content mt-40">
-                                
-                                <p>
-                                  
-                                </p>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Projects Single Modal INSIDE KBCC -->
-
-    </div>
-    <!-- End Portfolio -->
-
-    <!-- Start About 
-    ============================================= -->
-
-    <div id="about" class="about-style-six-area default-padding-top">
-        <div class="container">
-            <div class="row align-center">
-                <div class="about-style-six col-lg-5">
-                    <div class="thumb">
-                        <img class="wow fadeInUp alignwide" src="assets/img/illustration/unnamed-removebg-preview_ligth_copy_663x858.png" alt="ThumbAbout">
-                    </div>
-                </div>
-                <div class="about-style-six col-lg-6 offset-lg-1">
-                    <h4 class="sub-title">About Me</h4>
-                    
-                    <p>
-                     <p>Hi, my name is John Rua I am skilled web developer with a wealth of experience in PHP and JavaScript. With a deep understanding of these two powerful programming languages, capable of crafting dynamic and interactive web applications that engage users and deliver exceptional functionality.</p>
-
-                    <p>As a PHP developer, I have honed my skills in server-side scripting, enabling me to create robust and scalable web solutions. Also, well-versed in PHP frameworks such as Laravel, leveraging their features to expedite development and enhance code maintainability. With a strong grasp of database integration, seamlessly incorporates MySQL or other database systems into PHP applications, ensuring efficient data storage and retrieval.</p>
-
-<p>In addition to my PHP expertise, I am also proficient in JavaScript, a versatile language that empowers to bring life to the front end of web applications. I am adept at leveraging JavaScript frameworks and libraries like React and Vue.js to develop dynamic user interfaces and enhance user experiences. Including DOM manipulation, event handling, and asynchronous programming, allowing me to create interactive elements and deliver real-time updates to users.</p>
-                    </p>
-                    <div class="skill-list">
-                        <ul>
-                            <li>
-                                <div class="icon">
-                                    <i class="fab fa-wordpress"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>WordPress Developer</h4>
-                                    
-                                </div>
-                            </li>
-                            <li>
-                                <div class="icon">
-                                    <i class="fab fa-php"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>PHP Developer</h4>
-                                    
-                                </div>
-                            </li>
-                            <li>
-                                <div class="icon">
-                                    <i class="fab fa-js"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>Javascript Developer</h4>
-                                    
-                                </div>
-                            </li>
-                            <li>
-                                <div class="icon">
-                                    <i class="fab fa-html5"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>HTML5 Developer</h4>
-                                    
-                                </div>
-                            </li>
-                            <li>
-                                <div class="icon">
-                                    <i class="fab fa-css3-alt"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>CSS </h4>
-                                   
-                                </div>
-
-                            </li>
-                            <li>
-                                <div class="icon">
-                                    <i class="fab fa-sass"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>SASS </h4>
-                                   
-                                </div>
-
-                            </li>
-                            <li>
-                                <div class="icon">
-                                    <i class="fab fa-linux"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>Linux</h4>
-                                   
-                                </div>
-
-                            </li>
-                            <li>
-                                <div class="icon">
-                                    <i class="fab fa-python"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>Python</h4>
-                                   
-                                </div>
-
-                            </li>
-                            
-                            <li>
-                                <div class="icon">
-                                    <i class=" fab fa-jira"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>Jira</h4>
-                                   
-                                </div>
-
-                            </li>
-                           
-
-                            
-
-                            
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End About -->
-
-    <!-- Start Resume 
-    ============================================= -->
-    <div id="resume" class="resume-area default-padding-top">
-        <div class="shape-right-top-extra">
-            <img src="assets/img/shape/14.png" alt="Shape">
-        </div>
-        <div class="container">
-            <div class="experience-content-box">
-                <div class="row">
-                    <div class="col-xl-10 offset-xl-1">
-    
-                        <div class="nav nav-tabs text-center resume-tab-navs" id="nav-tab" role="tablist">
-    
-                            <button class="nav-link active" id="nav-id-1" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">
-                                Biography <strong>01</strong>
-                            </button>
-                            <button class="nav-link" id="nav-id-2" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">
-                                Skills <strong>02</strong>
-                            </button>
-                            <button class="nav-link" id="nav-id-3" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">
-                                Education <strong>03</strong>
-                            </button>
-    
-                        </div>
-    
-                        <div class="tab-content resume-tab-content" id="nav-tabContent">
-                            <!-- Single Item -->
-                            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="nav-id-1">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <ul class="biography-table">
-                                            <li>
-                                                <h5>Name</h5>
-                                                <p>
-                                                    John Rua
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <h5>Email</h5>
-                                                <p>
-                                                    Jrua89@gmail.com
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <h5>Address</h5>
-                                                <p>
-                                                    New York City 11101 USA
-                                                </p>
-                                            </li>
-                                                                                       
-                                            <li>
-                                                <h5>Freelance</h5>
-                                                <p>
-                                                    Available
-                                                </p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-    
-                            <!-- Single Item -->
-                            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="nav-id-2">
-                                <div class="row align-center">
-                                    <div class="col-lg-12">
-                                        <ul class="skill-table">
-                                            
-                                            <li>
-                                                <div class="row align-center">
-                                                    <div class="col-lg-2">
-                                                        <div class="icon">
-                                                            <i class="fab fa-php" style="color:white"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <h4>Object oriented programming</h4>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <div class="progress-box">
-                                                            <h5>80%</h5>
-                                                            <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" data-width="80"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li>
-                                                <div class="row align-center">
-                                                    <div class="col-lg-2">
-                                                        <div class="icon">
-                                                            <i class="fab fa-html5"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <h4>Front-End </h4>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <div class="progress-box">
-                                                            <h5>92%</h5>
-                                                            <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" data-width="92"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li>
-                                                <div class="row align-center">
-                                                    <div class="col-lg-2">
-                                                        <div class="icon">
-                                                            <i class="fab fa-js"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <h4>Advance frontend development</h4>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <div class="progress-box">
-                                                            <h5>80%</h5>
-                                                            <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" data-width="80"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li>
-                                                <div class="row align-center">
-                                                    <div class="col-lg-2">
-                                                        <div class="icon">
-                                                            <i class="fab fa-git"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <h4>Version control system</h4>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <div class="progress-box">
-                                                            <h5>85%</h5>
-                                                            <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" data-width="85"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li>
-                                                <div class="row align-center">
-                                                    <div class="col-lg-2">
-                                                        <div class="icon">
-                                                            <i class="fas fa-database"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <h4>Mysql and Mssql Databases</h4>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <div class="progress-box">
-                                                            <h5>90%</h5>
-                                                            <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" data-width="90"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <p>Certifications:</p>
-                                            <div data-iframe-width="250" data-iframe-height="370" data-share-badge-id="450800ec-236f-4dfa-bfb6-a1c3cdf45a39" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-                                            <div data-iframe-width="250" data-iframe-height="370" data-share-badge-id="9f5f73b2-76ed-4190-a1a3-5d947be4d6b1" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <style>
-                                .containerNotification {
-                                  
-                                  width: 100%;
-                                  display: flex;
-                                  align-items: center;
-                                  justify-content: center;
-                                }
-                                #enableNotifications {
-                                  height: 80px;
-                                  width: 350px;
-                                  background-color: #ff014f;
-                                  color: white;
-                                  border: 1px;
-                                  border-radius: 500px;
-                                  font-size: 24px;
-                                }
-                              </style>
-                            <!-- Single Item -->
-                            <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="nav-id-3">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <ul class="education-table">
-                                            <li>
-                                                <h4>Associate in Science -  Liberal Arts</h4>
-                                                <h5>Kingsborough Community College</h5>
-                                                <span>2012 - 2014</span>
-                                                <p>
-                                                    An Associate of Arts (AA) degree in Liberal Arts is a two-year undergraduate degree that provides students with a broad education in various disciplines within the humanities, social sciences, natural sciences, and fine arts.
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <h4>Bachelor of Science in Computer Science</h4>
-                                                <h5>CUNY School of Professional Studies</h5>
-                                                <span>2020 - 2021</span>
-                                                <p>
-                                                    The skills needed to enter or advance in the fast-growing fields of application software programming, cybersecurity, database management and infrastructure and support. The program offers foundational knowledge and hands-on programming competencies, resulting in project-based work samples similar to that of a programming boot camp.
-                                                    
-                                                </p>
-                                            </li>
-                                            
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-    
-    
-                        </div>
-    
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="containerNotification button mt-55">
-           
-            <button class="btn btn-md circle btn-theme effect"><a href="John's Resume.pdf"><i class="far fa-file" color="white"></i> See PDF Resume</a></button>
-          </div>
-    </div>
-    <!-- End Resume -->
-
-    <!-- Start Blog 
-    ============================================= -->
-    <div id="blog" class="blog-style-one-area blog-area default-padding-top bottom-less">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="site-heading text-center">
-                        <h4 class="sub-title">News</h4>
-                        <h2 class="title">Latest from blog</h2>
-                        <div class="devider"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--NEWS BLOG--> 
-        <div class="container">    
-             
-        <div id="mediumData" class="row"></div>
-          
-        </div>
-        <!--NEWS BLOG-->
-
-    </div>
-    <!-- End Blog -->
-    
-    <!-- Start Contact Area 
-    ============================================= -->
-    <div id="contact" class="contact-area shape-less default-padding overflow-hidden">
-        <div id="instafeed-container"  >
-        </div>
-        <h2 class="text-shade">Contact</h2>
-        <div class="container">
-            <div class="contact-content">
-                <div class="row align-center">
-                    <div class="col-lg-12  mb-md-50 mb-xs-50">
-                        <div class="form-box">
-                            <h2>Let's talk?</h2>
-                            
-                            <form id="myForm">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <input class="form-control" id="from_name" name="from_name" placeholder="Name*" type="text" required>
-                                            <span class="alert-error"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input class="form-control" id="from_email" name="from_email" placeholder="Email*" type="email" required>
-                                            <span class="alert-error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input class="form-control" id="from_phone" name="from_phone" placeholder="Phone*" type="tel" required>
-                                            <span class="alert-error"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group message">
-                                            <textarea class="form-control" id="message" name="message" placeholder="Tell me about your project *" required></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-								
-								 <!-- Include the CSRF token in a data attribute -->
-								<input type="hidden" id="csrfToken" value="">
-                                
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        
-                                        <button type="submit">
-                                            Send Message
-                                        </button>
-                                       
-                                    </div>
-                                </div>
-                                
-                                <!-- Alert Message -->
-                                <div class="col-lg-12 alert-notification">
-                                    <div id="messagenone" class="alert-msg"></div>
-                                    <p class="text-center">
-                                        <small>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</small>
-                                    </p>
-                                </div>
-                                
-                            </form>
-                        </div>
-                    </div>
-
-                    <!--<div class="col-lg-4 offset-lg-1 info">
-                        <div class="content">
-                            <ul>
-                                <li class="contact-info-list wow fadeInUp">
-                                    <div class="icon">
-                                        <i class="fas fa-envelope-open-text"></i>
-                                    </div>
-                                    <div class="info">
-                                        <p>Our Email</p>
-                                        <h5>
-                                            <a href="mailto:info@validtheme.com">info@validtheme.com</a> 
-                                            <br> 
-                                            <a href="mailto:support@softar.com">support@softar.com</a>
-                                        </h5>
-                                    </div>
-                                </li>
-                                <li class="contact-info-list wow fadeInUp" data-wow-delay="300ms">
-                                    <div class="icon">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </div>
-                                    <div class="info">
-                                        <p>Address</p>
-                                        <h5>
-                                            22 Baker Street, <br> London, United Kingdom, <br> W1U 3BW
-                                        </h5>
-                                    </div>
-                                </li>
-                                <li class="contact-info-list wow fadeInUp" data-wow-delay="500ms">
-                                    <div class="icon">
-                                        <i class="fas fa-headphones-alt"></i>
-                                    </div>
-                                    <div class="info">
-                                        <p>Phone</p>
-                                        <h5>
-                                            <a href="tel:+4733378901">+44-20-7328-4499</a> 
-                                            <br><a href="tel:+4733378901">+99-34-8878-9989</a>
-                                        </h5>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>-->
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Contact Area -->
-
-    <!-- Start Footer 
-    ============================================= -->
-    <footer class="bg-dark text-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <ul class="footer-social">
-                        <li class="linkedin">
-                            <a target="_blank" rel="canonical" aria-label="linkedin"  href="https://www.linkedin.com/in/john-rua-1b01378a/">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                        </li>
-                        <li class="github">
-                            <a target="_blank" rel="canonical" aria-label="github" href="https://github.com/JRua89">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </li>
-                        <li class="google">
-                            <a target="_blank"  aria-label="google-play" href="https://play.google.com/store/apps/dev?id=7205864981443481452">
-                                <i class="fab fa-google-play"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6 text-end">
-                    <p>&copy; <span id="year"></span>  John Rua. All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- End Footer -->
-    
-    <!-- Modal -->
-<div id="myModalSuccess" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-  
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <h2>Form Submitted Successfully!</h2>
-        </div>
-        
-      </div>
-  
-    </div>
-  </div>
-
-  <style type="text/css">
-
-    </style>
-    <!-- jQuery Frameworks
-    ============================================= -->
-    <script src="https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"></script>
-<!--<script src="pwabuilder-sw.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
-        <script src="assets/js/index.js"></script>
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery.appear.js"></script>
-    <script src="assets/js/jquery.easing.min.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/modernizr.custom.13711.js"></script>
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/progress-bar.min.js"></script>
-    <script src="assets/js/circle-progress.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/jquery.nice-select.min.js"></script>
-    <script src="assets/js/count-to.js"></script>
-    <script src="assets/js/jquery.scrolla.min.js"></script>
-    <script src="assets/js/YTPlayer.min.js"></script>
-    <script src="assets/js/TweenMax.min.js"></script>
-    <script src="assets/js/typed.js"></script>
-    <script src="assets/js/validnavs.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    
-    
-    <!--<script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-
-    <script>
-	
-	    function generateCSRFToken() {
-        return Math.random().toString(36).substr(2);
-    }
-
-
-
-//var token = 'IGQVJYcFZAtclJPNzdiOU1NN3o0dlZAReHltcnZA3Vk10Umdrd3dveTlGZA3hIMnNJZADIzck5ncHNRam5nOXpDVWNfRVZANTmhWdV9wTS1pWGtWMGJSMU1yd0RJYWs4dU5xR3E4MTltZADVXbGJYTkczMW5aZAgZDZD',
-//var token = 'IGQVJYcFZAtclJPNzdiOU1NN3o0dlZAReHltcnZA3Vk10Umdrd3dveTlGZA3hIMnNJZADIzck5ncHNRam5nOXpDVWNfRVZANTmhWdV9wTS1pWGtWMGJSMU1yd0RJYWs4dU5xR3E4MTltZADVXbGJYTkczMW5aZAgZDZD',
-
-
-
- 
-   
-        // Import the functions you need from the SDKs you need
-       
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
-//old firebase configuration
-
-// apiKey: "AIzaSyBgT5RVb0VTa_AcUH2GDHBv_LiJHHWFtxk",
-//           authDomain: "database-webapp-88d86.firebaseapp.com",
-//           projectId: "database-webapp-88d86",
-//           databaseURL: "https://database-webapp-88d86-default-rtdb.firebaseio.com",
-//           storageBucket: "database-webapp-88d86.appspot.com",
-//           messagingSenderId: "153418618298",
-//           appId: "1:153418618298:web:13330c66d43cb241e2b983",
-//           measurementId: "G-561QJ6DGJH"
-//old firebase configuration
-
-
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyASeJzCBQAZa_wNRdtZ0C-vU_erBWDyAy4",
-            authDomain: "johnrua-site.firebaseapp.com",
-            databaseURL: "https://johnrua-site-default-rtdb.firebaseio.com",
-            projectId: "johnrua-site",
-            storageBucket: "johnrua-site.appspot.com",
-            messagingSenderId: "235311863055",
-            appId: "1:235311863055:web:fb20e0f99d9ff5caa05a7a",
-            measurementId: "G-DD05K2CBHL"
-        };
-      
-        // Initialize Firebase
-       firebase.initializeApp(firebaseConfig);
-    //    const firestore = firebase.firestore();
-    //    firestore.settings(firebaseConfig);
-       const db =  firebase.firestore();
-      
-       
-      const usersRef = db.collection("/users");
-      var UserRefcol = firebase.database().ref().child('users');
-     
-      // const msgRef = db.ref("/users");
-    
-
-        /// get value from DB
-        UserRefcol.on('value',
-                 function (snap){
-                    let arrayvalue = snap.val();
-                    console.log(arrayvalue);
-                    var mainContainerPortfolio = document.getElementById("porfolioData");
-                   
-                    arrayvalue.forEach((siteDetail) => {
-
-                    var divPort = document.createElement("div");
-                   
-		            divPort.classList.add( "pf-item" );
-
-       
-
-                    divPort.innerHTML = '<div class="overlay-content"><img src="'+siteDetail.img+'" alt="thumb"><div class="content"><div class="title"><span>'+siteDetail.title+'</span><h5><a href="#" onclick="functionModal('+siteDetail.id+')" data-bs-toggle="modal" data-bs-target="#portfolioModal">'+siteDetail.type+'</a></h5></div><a href="#" data-bs-toggle="modal"  onclick="functionModal('+siteDetail.id+')" data-bs-target="#portfolioModal"><i class="fas fa-arrow-right"></i></a></div></div>';
-
-                    mainContainerPortfolio.appendChild(divPort);
-                    })
-                    
-
-                  }
- 
-            );
-
-
-            function  functionModal(id) {
-
-                if (id == 6){
-                        
-                }
-
-            
-            $("#ModalDataBody").empty();
-            $("#ModalDataImg").empty();
-            $("#ModalDataLink").empty();
-            $("#ModalDataAddress").empty();
-            $("#ModalDataClient").empty();
-            $("#ModalDatabodyTitle").empty();
-            $("#ModalDataDate").empty();
-            $("#ModalDataType").empty();
-
-            var UserRefcolmodaldata = firebase.database().ref().child('modaldata/'+id+'');
-
-            /// get value from DB
-            UserRefcolmodaldata.on('value',
-                 function (snap){
-                    let arrayvaluemodal = snap.val();
-                    console.log(arrayvaluemodal);
-
-                var mainContainerModalDataBody = document.getElementById("ModalDataBody");
-                var mainContainerModalDataImg = document.getElementById("ModalDataImg");
-                var mainContainerModalDataLink = document.getElementById("ModalDataLink");
-                var mainContainerModalDataAddress = document.getElementById("ModalDataAddress"); 
-                var mainContainerModalDataClient = document.getElementById("ModalDataClient");
-                var mainContainerModalDatabodyTitle = document.getElementById("ModalDatabodyTitle");
-                var mainContainerModalDatabodyDate = document.getElementById("ModalDataDate");
-                var mainContainerModalDatabodyType = document.getElementById("ModalDataType");
-           
-              
-
-                     var divModalDatabody = document.createElement("div");
-                     var divModalDataimg = document.createElement("div");
-                     var divModalDatalink = document.createElement("div");
-                     var divModalDataaddress = document.createElement("div");
-                     var divModalDataclient = document.createElement("div");
-                     var divModalDatabodytitle = document.createElement("div");
-                     var divModalDatabodydate = document.createElement("div");
-                     var divModalDatabodytype = document.createElement("div");
-                 
-
-                     divModalDatabody.innerHTML = arrayvaluemodal.body;
-                     divModalDataimg.innerHTML = '<img  src="'+arrayvaluemodal.img+'" alt="Thumb">';
-                     divModalDatalink.innerHTML = ' <div style="word-wrap: break-word;"><a href="'+arrayvaluemodal.link+'" target="_blank">'+arrayvaluemodal.link+'</a></div>';
-                     divModalDataaddress.innerHTML = arrayvaluemodal.address;
-                     divModalDataclient.innerHTML = arrayvaluemodal.client;
-                     divModalDatabodytitle.innerHTML = arrayvaluemodal.bodyTitle;
-                     divModalDatabodydate.innerHTML = arrayvaluemodal.date;
-                     divModalDatabodytype.innerHTML = arrayvaluemodal.project_type;
-                    
-                     
-
-                     mainContainerModalDataBody.appendChild(divModalDatabody);
-                     mainContainerModalDataImg.appendChild(divModalDataimg);
-                     mainContainerModalDataLink.appendChild(divModalDatalink);
-                     mainContainerModalDataAddress.appendChild(divModalDataaddress);
-                     mainContainerModalDataClient.appendChild(divModalDataclient);
-                     mainContainerModalDatabodyTitle.appendChild(divModalDatabodytitle);
-                     mainContainerModalDatabodyDate.appendChild(divModalDatabodydate);
-                     mainContainerModalDatabodyType.appendChild(divModalDatabodytype);
-                    
-                     
-               
-                    
-
-                  }
- 
-            );
-
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --accent: #00ff87;
+            --accent-secondary: #00d4ff;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --gradient: linear-gradient(135deg, #00ff87 0%, #00d4ff 100%);
+        }
 
-            //Insert into DB
-           // function changeData(userId){
-       // var someName = document.querySelector("input").value
-        // firebase.database().ref('users/' + 5).set({
-        //   age: 38,
-        //   email: "jrua89@hotmail.com",
-        //   name: "Henry"
-        // },(error) => {
-        // if (error) {
-        //     // The write failed...
-        //     console.log('write failed');
-        // } else {
-        //     // Data saved successfully!
-        //     console.log('write success');
-        // }
-        //     });
-    //};
-  
-    //Delete from the database
-    // let userRef = firebase.database().ref().child('users/' + 5);
-    // userRef.remove().then(
-	// (para) => {
-	// 	console.log("Removed successfully");
-	// },
-	// (para) => {
-	// 	console.log("Failure occured, please solve-> " + para);
-	// }
-    // );
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 135, 0.1);
+        }
 
-    //UPDATE users from DB
-    //UserRefcol.child(1).update({'age':55});
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-      </script>
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-text .name {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .role {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .role span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .hero-desc {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--bg-dark);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 135, 0.3);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-circle {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            font-weight: 800;
+            color: var(--bg-dark);
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating-tags {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tag {
+            position: absolute;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .tag:nth-child(1) { top: 10%; left: -10%; animation-delay: 0s; }
+        .tag:nth-child(2) { top: 30%; right: -10%; animation-delay: 0.5s; }
+        .tag:nth-child(3) { bottom: 20%; left: -5%; animation-delay: 1s; }
+        .tag:nth-child(4) { bottom: 10%; right: 0%; animation-delay: 1.5s; }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-title .highlight {
+            color: var(--accent);
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 135, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .service-card * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-item {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 135, 0.1);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .skill-percent {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        /* Education Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid var(--bg-dark);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 135, 0.1);
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            min-width: 40px;
+        }
+
+        .info-text h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .info-text p {
+            color: var(--text-secondary);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 255, 135, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 135, 0.1);
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .profile-circle {
+                width: 250px;
+                height: 250px;
+                font-size: 6rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-tags {
+                display: none;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">JR</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hey, I'm <span class="name">John Rua</span></h1>
+                <p class="role"><span>Full Stack Developer</span> | Web Developer | Software Engineer</p>
+                <p class="hero-desc">
+                    Skilled web developer with extensive experience in PHP and JavaScript, crafting dynamic and interactive web applications that deliver exceptional functionality and user experiences.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#services" class="btn btn-secondary">View Work</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="profile-circle">JR</div>
+                <div class="floating-tags">
+                    <div class="tag">React</div>
+                    <div class="tag">PHP</div>
+                    <div class="tag">JavaScript</div>
+                    <div class="tag">Laravel</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-title">
+            <h2>What I <span class="highlight">Do</span></h2>
+            <p>My expertise in creating exceptional digital experiences</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Website Design</h3>
+                <p>Creating captivating and user-friendly online experiences with visually stunning layouts that reflect brand identity and engage target audiences through thoughtful typography, color palettes, and imagery.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>App Development</h3>
+                <p>Designing and building cutting-edge mobile applications with seamless and intuitive interfaces. Leveraging expertise in programming languages and frameworks to craft robust functionalities with optimal performance.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>UX/UI Design</h3>
+                <p>Crafting exceptional digital experiences that blend usability, aesthetics, and user satisfaction. Through extensive research and user testing, designing intuitive and user-centered interfaces that enhance engagement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-title">
+            <h2>Technical <span class="highlight">Skills</span></h2>
+            <p>My proficiency across various technologies</p>
+        </div>
+        <div class="skills-container">
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-name">Front-End Development</span>
+                    <span class="skill-percent">92%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 92%"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-name">MySQL & MSSQL Databases</span>
+                    <span class="skill-percent">90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-name">Version Control System</span>
+                    <span class="skill-percent">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-name">OOP & Advanced Frontend</span>
+                    <span class="skill-percent">80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%"></div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 3rem; text-align: center;">
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Technologies & Tools</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                <span class="tag">WordPress</span>
+                <span class="tag">PHP</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS/SASS</span>
+                <span class="tag">React</span>
+                <span class="tag">Vue.js</span>
+                <span class="tag">Laravel</span>
+                <span class="tag">Linux</span>
+                <span class="tag">Python</span>
+                <span class="tag">Jira</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-title">
+            <h2>Education & <span class="highlight">Background</span></h2>
+            <p>My academic journey in technology</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2012 - 2014</div>
+                    <h3>Associate in Science - Liberal Arts</h3>
+                    <h4>Kingsborough Community College</h4>
+                    <p>Received a broad education in various disciplines within the humanities, social sciences, natural sciences, and fine arts, providing a strong foundation for future studies.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2020 - 2021</div>
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <h4>CUNY School of Professional Studies</h4>
+                    <p>Gained skills in application software programming, cybersecurity, database management, and infrastructure support. The program offered foundational knowledge and hands-on programming competencies with project-based work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>Let's <span class="highlight">Connect</span></h2>
+            <p>Get in touch for collaborations or just a friendly hello</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-item">
+                    <div class="info-icon">📧</div>
+                    <div class="info-text">
+                        <h3>Email</h3>
+                        <p>Jrua89@gmail.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <h3>Location</h3>
+                        <p>New York City, NY 11101</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">💼</div>
+                    <div class="info-text">
+                        <h3>Freelance Status</h3>
+                        <p>Available for Projects</p>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form" onsubmit="return handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="border: none; cursor: pointer;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>&copy; 2025 John Rua. All Rights Reserved</p>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            e.target.reset();
+            return false;
+        }
+
+        // Smooth reveal animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .skill-item, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
