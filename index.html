@@ -1123,9 +1123,9 @@
             const formStatus = document.getElementById('formStatus');
             
             // Check if EmailJS is configured
-            if (EMAILJS_PUBLIC_KEY != '' || 
-                EMAILJS_SERVICE_ID != '' || 
-                EMAILJS_TEMPLATE_ID != '') {
+            if (!EMAILJS_PUBLIC_KEY  || 
+                !EMAILJS_SERVICE_ID  || 
+                !EMAILJS_TEMPLATE_ID) {
                 
                 formStatus.className = 'form-status error';
                 formStatus.textContent = '⚠️ EmailJS is not configured. Please add your credentials in the code.';
