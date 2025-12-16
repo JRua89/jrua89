@@ -1123,44 +1123,44 @@
             const formStatus = document.getElementById('formStatus');
             
             // Check if EmailJS is configured
-            if (!EMAILJS_PUBLIC_KEY  || 
-                !EMAILJS_SERVICE_ID  || 
-                !EMAILJS_TEMPLATE_ID) {
+//             if (!EMAILJS_PUBLIC_KEY  || 
+//                 !EMAILJS_SERVICE_ID  || 
+//                 !EMAILJS_TEMPLATE_ID) {
                 
-                formStatus.className = 'form-status error';
-                formStatus.textContent = '⚠️ EmailJS is not configured. Please add your credentials in the code.';
-                formStatus.style.display = 'block';
+//                 formStatus.className = 'form-status error';
+//                 formStatus.textContent = '⚠️ EmailJS is not configured. Please add your credentials in the code.';
+//                 formStatus.style.display = 'block';
                 
-                // Show instructions in console
-                console.log(`
-===========================================
-📧 EMAILJS SETUP INSTRUCTIONS
-===========================================
+//                 // Show instructions in console
+//                 console.log(`
+// ===========================================
+// 📧 EMAILJS SETUP INSTRUCTIONS
+// ===========================================
 
-1. Go to https://www.emailjs.com/ and sign up
-2. Create an Email Service (Gmail, Outlook, etc.)
-3. Create an Email Template with these variables:
-   - {{from_name}} - Sender's name
-   - {{from_email}} - Sender's email
-   - {{message}} - Message content
-4. Get your credentials from the dashboard
-5. Replace these values in the code:
-   - EMAILJS_PUBLIC_KEY
-   - EMAILJS_SERVICE_ID
-   - EMAILJS_TEMPLATE_ID
+// 1. Go to https://www.emailjs.com/ and sign up
+// 2. Create an Email Service (Gmail, Outlook, etc.)
+// 3. Create an Email Template with these variables:
+//    - {{from_name}} - Sender's name
+//    - {{from_email}} - Sender's email
+//    - {{message}} - Message content
+// 4. Get your credentials from the dashboard
+// 5. Replace these values in the code:
+//    - EMAILJS_PUBLIC_KEY
+//    - EMAILJS_SERVICE_ID
+//    - EMAILJS_TEMPLATE_ID
 
-Example Template:
------------------
-New message from {{from_name}}
-Email: {{from_email}}
+// Example Template:
+// -----------------
+// New message from {{from_name}}
+// Email: {{from_email}}
 
-Message:
-{{message}}
-===========================================
-                `);
+// Message:
+// {{message}}
+// ===========================================
+//                 `);
                 
-                return false;
-            }
+//                 return false;
+//             }
             
             // Disable button and show loading state
             submitBtn.disabled = true;
