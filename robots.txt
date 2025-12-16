@@ -1,0 +1,4 @@
+# Allow example to allow all crawlers
+Sitemap: https://johnrua.com/sitemap.xml
+User-agent: *
+Allow: /

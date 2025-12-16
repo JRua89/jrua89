@@ -1,0 +1,81 @@
+{
+  "hosting": {
+      "cors": {
+        "origins": ["https://johnrua.com"]
+      },
+    "public": "y",
+    "headers": [ {
+      "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+      "headers": [ {
+        "key": "Access-Control-Allow-Origin",
+        "value": "*"
+      }, {
+        "key": "Access-Control-Allow-Credentials",
+        "value": "true"
+      }, 
+      {
+        "key": "Access-Control-Allow-Methods",
+        "value": "GET, POST, OPTIONS"
+      },{
+        "key": "Access-Control-Allow-Headers",
+        "value": "Access-Control-Allow-Origin, Access-Control-Allow-Credentials"
+      } ]
+    }, {
+      "source": "**/*.@(jpg|jpeg|gif|png)",
+      "headers": [ {
+        "key": "Cache-Control",
+        "value": "max-age=7200"
+      } ]
+    }, {
+      "source": "404.html",
+      "headers": [ {
+        "key": "Cache-Control",
+        "value": "max-age=300"
+      } ]
+    } ],
+  "redirects": [
+    {
+      "source": "https://www.johnrua.com",
+      "destination": "https://johnrua.com",
+      "type": 301
+    }
+  ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "emulators": {
+    "hosting": {
+      "port": 5000
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  },
+    "uid": "b7ae2b61-f954-483e-94d6-716d68c7ffa0",
+    "token": {
+      "sub": "b7ae2b61-f954-483e-94d6-716d68c7ffa0",
+      "authFields": {
+        "email": "Jrua89@gmail.com",
+        "email_verified": false,
+        "phone_number": "9176805871",
+        "name": "John Mckenny Rua"
+      },
+      "firebase": {
+        "sign_in_provider": "google.com"
+      }
+    }
+
+
+}
+
+
