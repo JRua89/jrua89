@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>John Rua — Home</title>
+  <meta name="description" content="Personal website of John Rua" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">John Rua</h1>
+      <nav class="nav">
+        <a href="/" class="active">Home</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Hello 👋</h2>
+      <p>Welcome to my GitHub Pages site. I share things I'm building and learning.</p>
+      <div class="cta">
+        <a class="button" href="https://github.com/" target="_blank" rel="noopener">See my GitHub</a>
+        <a class="button outline" href="/projects.html">View Projects</a>
+      </div>
+    </section>
+
+    <section>
+      <h3>Featured Work</h3>
+      <div class="cards">
+        <article class="card">
+          <h4>Miyoo Mini Plus+ tips</h4>
+          <p>Notes and tweaks for my handheld setup.</p>
+          <a href="#">Read more →</a>
+        </article>
+        <article class="card">
+          <h4>Personal dashboard</h4>
+          <p>A simple dashboard built with vanilla JS.</p>
+          <a href="#">Read more →</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> John Rua · Built with GitHub Pages</p>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
