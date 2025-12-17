@@ -684,6 +684,32 @@
             margin-bottom: 1rem;
         }
 
+         /* Responsive Design */
+        @media (max-width: 968px) {
+            .timelines-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline-item::before {
+                left: -36px;
+            }
+
+            .timeline-content {
+                padding: 20px;
+            }
+        }
+
         /* Contact Section */
         .contact-container {
             display: grid;
