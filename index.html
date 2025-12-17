@@ -138,24 +138,52 @@
             opacity: 0.7;
         }
 
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100vh;
-            background: var(--bg-card);
-            z-index: 2000;
-            padding: 2rem;
-            transition: left 0.3s ease;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-        }
+      /* Mobile Menu */
+    .mobile-menu {
+        /* --- FIX: Removed 'display: none;' to allow CSS transition --- */
+        visibility: hidden; /* New: Hides element while allowing layout calc */
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--bg-card);
+        z-index: 2000;
+        padding: 2rem;
+        /* Added visibility transition */
+        transition: left 0.3s ease, visibility 0s linear 0.3s; 
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    }
 
-        .mobile-menu.active {
-            left: 0;
-        }
+    .mobile-menu.active {
+        left: 0;
+        visibility: visible; /* New: Show immediately on open */
+        transition: left 0.3s ease, visibility 0s linear 0s; /* New: Remove delay on open */
+    }
+
+    /* Mobile Overlay */
+    .mobile-overlay {
+        /* --- FIX: Removed 'display: none;' to allow CSS transition --- */
+        visibility: hidden; /* New: Hides element while allowing layout calc */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1999;
+        opacity: 0;
+        /* Hides visibility AFTER the opacity transition finishes (0.3s) */
+        transition: opacity 0.3s ease, visibility 0s linear 0.3s; 
+    }
+
+    .mobile-overlay.active {
+        opacity: 1;
+        visibility: visible; /* New: Show immediately on open */
+        /* Hides visibility immediately (0s delay) to allow opacity transition to start */
+        transition: opacity 0.3s ease, visibility 0s linear 0s;
+    }
 
         .mobile-menu-header {
             display: flex;
@@ -791,7 +819,7 @@
 
             .tag:nth-child(1) { top: 22%; left: 0; }
             .tag:nth-child(2) { top: 27%; right: 0; }
-            .tag:nth-child(3) { bottom: 220px; left: 0; }
+            .tag:nth-child(3) { bottom: 522px; left: 0; }
             .tag:nth-child(4) { bottom: 40%; right: 0; }
             .tag:nth-child(5) { bottom: 40%; right: 0; }
             .tag:nth-child(6) { bottom: 40%; right: 0; }
@@ -1080,36 +1108,23 @@
         })();
 
         // Mobile Menu Functions
-       function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('mobileOverlay');
-            const isActive = menu.classList.contains('active');
-            
+      // Utility functions
+        function toggleMobileMenu() {
+            const isActive = mobileMenu.classList.contains('active');
             if (isActive) {
-                // When closing
-                menu.classList.remove('active');
-                overlay.classList.remove('active');
-              
-                document.body.style.overflow = 'auto';
+                closeMobileMenu();
             } else {
-                // When opening
-              
-                setTimeout(() => {
-                    menu.classList.add('active');
-                    overlay.classList.add('active');
-                }, 10); // A slight delay to allow display: block to apply
-                document.body.style.overflow = 'hidden';
+                mobileMenu.classList.add('active');
+                mobileOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevents scrolling behind the menu
             }
         }
 
         // Also update closeMobileMenu for consistency and immediate action
         function closeMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('mobileOverlay');
-            menu.classList.remove('active');
-            overlay.classList.remove('active');
-           
-            document.body.style.overflow = 'auto';
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restores scrolling
         }
 
         function closeMobileMenu() {
@@ -1130,24 +1145,18 @@
         }
 
         function updateThemeToggle(theme) {
-            const themeIcon = document.getElementById('themeIcon');
-            const themeLabel = document.getElementById('themeLabel');
-            
-            if (theme === 'light') {
-                themeIcon.textContent = '☀️';
-                if (themeLabel) themeLabel.textContent = 'Light';
-            } else {
-                themeIcon.textContent = '🌙';
-                if (themeLabel) themeLabel.textContent = 'Dark';
-            }
+            const icon = document.getElementById('themeIcon');
+            const label = document.getElementById('themeLabel');
+            if (icon) icon.textContent = theme === 'light' ? '☀️' : '🌙';
+            if (label) label.textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
         }
 
         function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             document.documentElement.setAttribute('data-theme', newTheme);
-            updateThemeToggle(newTheme);
             localStorage.setItem('theme', newTheme);
+            updateThemeToggle(newTheme);
         }
 
         // Form submission
@@ -1186,57 +1195,45 @@
         }
 
         // Initialize on load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set theme
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-                updateThemeToggle(savedTheme);
-            } else {
-                setThemeBasedOnTime();
-            }
-
-            // Setup event listeners
+      document.addEventListener('DOMContentLoaded', () => {
             const themeToggle = document.getElementById('themeToggle');
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileMenuClose = document.getElementById('mobileMenuClose');
+            const mobileMenu = document.getElementById('mobileMenu');
             const mobileOverlay = document.getElementById('mobileOverlay');
-            const contactForm = document.getElementById('contactForm');
             const menuLinks = document.querySelectorAll('.menu-link');
+            const contactForm = document.getElementById('contactForm');
+
+            // Set initial theme
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeToggle(savedTheme);
 
             // Theme toggle
             if (themeToggle) {
-                themeToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    toggleTheme();
-                });
+                themeToggle.addEventListener('click', toggleTheme);
             }
 
             // Mobile menu button
             if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    toggleMobileMenu();
-                });
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
             }
 
-            // Mobile menu close
+            // Mobile menu close button
             if (mobileMenuClose) {
-                mobileMenuClose.addEventListener('click', function(e) {
+                mobileMenuClose.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     closeMobileMenu();
                 });
             }
 
-            // Mobile overlay
+            // Mobile overlay (Closes menu when tapping outside)
             if (mobileOverlay) {
                 mobileOverlay.addEventListener('click', closeMobileMenu);
             }
 
-            // Menu links
+            // Menu links (Closes menu after navigation)
             menuLinks.forEach(link => {
                 link.addEventListener('click', closeMobileMenu);
             });
