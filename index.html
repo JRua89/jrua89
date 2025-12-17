@@ -1118,45 +1118,45 @@
     </div>
 
     <!-- Navigation -->
-    <nav>
-        <div class="nav-content">
-            <div class="logo">John Rua</div>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#Blog">Blog</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button class="theme-toggle" id="themeToggle">
-                    <span id="themeIcon">🌙</span>
-                    <span class="theme-label" id="themeLabel">Dark</span>
-                </button>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-            </div>
+<nav role="navigation" aria-label="Main navigation">
+    <div class="nav-content">
+        <div class="logo">John Rua</div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="#home" role="menuitem" aria-label="Navigate to Home section">Home</a></li>
+                <li role="none"><a href="#services" role="menuitem" aria-label="Navigate to Services section">Services</a></li>
+                <li role="none"><a href="#skills" role="menuitem" aria-label="Navigate to Skills section">Skills</a></li>
+                <li role="none"><a href="#Blog" role="menuitem" aria-label="Navigate to Blog section">Blog</a></li>
+                <li role="none"><a href="#education" role="menuitem" aria-label="Navigate to Education section">Education</a></li>
+                <li role="none"><a href="#contact" role="menuitem" aria-label="Navigate to Contact section">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle between light and dark theme">
+                <span id="themeIcon" aria-hidden="true">🌙</span>
+                <span class="theme-label" id="themeLabel">Dark</span>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-overlay" id="mobileOverlay"></div>
+  <!-- Mobile Menu Overlay -->
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <div class="logo">John Rua</div>
-            <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
-        </div>
-        <ul class="mobile-menu-links">
-            <li><a href="#home" class="menu-link">Home</a></li>
-            <li><a href="#services" class="menu-link">Services</a></li>
-            <li><a href="#skills" class="menu-link">Skills</a></li>
-            <li><a href="#Blog" class="menu-link">Blog</a></li>
-            <li><a href="#education" class="menu-link">Education</a></li>
-            <li><a href="#contact" class="menu-link">Contact</a></li>
-        </ul>
+<nav class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-menu-header">
+        <div class="logo">John Rua</div>
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile navigation menu">✕</button>
     </div>
+    <ul class="mobile-menu-links" role="menubar">
+        <li role="none"><a href="#home" class="menu-link" role="menuitem" aria-label="Navigate to Home section">Home</a></li>
+        <li role="none"><a href="#services" class="menu-link" role="menuitem" aria-label="Navigate to Services section">Services</a></li>
+        <li role="none"><a href="#skills" class="menu-link" role="menuitem" aria-label="Navigate to Skills section">Skills</a></li>
+        <li role="none"><a href="#Blog" class="menu-link" role="menuitem" aria-label="Navigate to Blog section">Blog</a></li>
+        <li role="none"><a href="#education" class="menu-link" role="menuitem" aria-label="Navigate to Education section">Education</a></li>
+        <li role="none"><a href="#contact" class="menu-link" role="menuitem" aria-label="Navigate to Contact section">Contact</a></li>
+    </ul>
+</nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -1168,9 +1168,9 @@
                     Skilled web developer with extensive experience in PHP and JavaScript, crafting dynamic and interactive web applications that deliver exceptional functionality and user experiences.
                 </p>
                 <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="#services" class="btn btn-secondary">View Work</a>
-                </div>
+    <a href="#contact" class="btn btn-primary" aria-label="Get in touch with John Rua">Get In Touch</a>
+    <a href="#services" class="btn btn-secondary" aria-label="View John Rua's work and services">View Work</a>
+</div>
             </div>
             <div class="hero-visual">
                 <div class="profile-circle">JR</div>
@@ -1359,9 +1359,9 @@
     </div>
     <div class="services-grid" id="blogGrid"></div>
     <div style="text-align: center; margin-top: 3rem;">
-        <button id="showMoreBtn" class="btn btn-primary" style="display: none; border: none; cursor: pointer;">
-            Show More Articles
-        </button>
+        <button id="showMoreBtn" class="btn btn-primary" style="display: none; border: none; cursor: pointer;" aria-label="Show more blog articles">
+    Show More Articles
+</button>
     </div>
 </section>
 
@@ -1474,24 +1474,24 @@
                     <label for="message">Message</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" id="submitBtn" style="border: none; cursor: pointer;">
-                    <span id="btnText">Send Message</span>
-                </button>
+                <button type="submit" class="btn btn-primary" id="submitBtn" style="border: none; cursor: pointer;" aria-label="Send contact form message">
+    <span id="btnText">Send Message</span>
+</button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#skills">Skills</a>
-            <a href="#education">Education</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <p>&copy; 2025 John Rua. All Rights Reserved</p>
-    </footer>
+    <footer role="contentinfo">
+    <div class="footer-links">
+        <a href="#home" aria-label="Return to Home section">Home</a>
+        <a href="#services" aria-label="Go to Services section">Services</a>
+        <a href="#skills" aria-label="Go to Skills section">Skills</a>
+        <a href="#education" aria-label="Go to Education section">Education</a>
+        <a href="#contact" aria-label="Go to Contact section">Contact</a>
+    </div>
+    <p>&copy; 2025 John Rua. All Rights Reserved</p>
+</footer>
 
     <script>
         // EmailJS Configuration
@@ -1506,31 +1506,42 @@
 
         // Mobile Menu Functions
       // Utility functions
-        function toggleMobileMenu() {
-            const isActive = mobileMenu.classList.contains('active');
-            if (isActive) {
-                closeMobileMenu();
-            } else {
-                mobileMenu.classList.add('active');
-                mobileOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevents scrolling behind the menu
-            }
-        }
+       
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    
+    const isActive = mobileMenu.classList.contains('active');
+    
+    if (isActive) {
+        closeMobileMenu();
+    } else {
+        mobileMenu.classList.add('active');
+        mobileOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Update ARIA attributes
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        mobileOverlay.setAttribute('aria-hidden', 'false');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    }
+}
 
-        // Also update closeMobileMenu for consistency and immediate action
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
-            mobileOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restores scrolling
-        }
-
-        function closeMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('mobileOverlay');
-            menu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
+function closeMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('mobileOverlay');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    
+    menu.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    
+    // Update ARIA attributes
+    menu.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('aria-hidden', 'true');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+}
 
         // Theme management
             function setThemeBasedOnTime() {
