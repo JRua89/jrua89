@@ -998,7 +998,7 @@
             }
         }
 
-        .blog-card {
+       .blog-card {
     background: var(--bg-card);
     border-radius: 20px;
     border: 1px solid rgba(0, 255, 135, 0.1);
@@ -1017,6 +1017,10 @@
 .blog-card:hover {
     transform: translateY(-10px);
     border-color: var(--accent);
+}
+
+.blog-card.hidden {
+    display: none;
 }
 
 .blog-image {
@@ -1330,7 +1334,7 @@
         </div>
     </section>
 
-    <section id="Blog">
+   <section id="Blog">
     <div class="section-title">
         <h2>Blog & <span class="highlight">Articles</span></h2>
         <p>Latest writings and insights from my Medium blog</p>
@@ -1342,6 +1346,11 @@
         Failed to load articles. Please try again later.
     </div>
     <div class="services-grid" id="blogGrid"></div>
+    <div style="text-align: center; margin-top: 3rem;">
+        <button id="showMoreBtn" class="btn btn-primary" style="display: none; border: none; cursor: pointer;">
+            Show More Articles
+        </button>
+    </div>
 </section>
 
 
@@ -1659,13 +1668,16 @@
             });
         });
 
-
 // Fetch and display Medium RSS feed
 async function loadMediumFeed() {
     const feedUrl = 'https://medium.com/feed/@Jrua89';
     const blogGrid = document.getElementById('blogGrid');
     const blogLoading = document.getElementById('blogLoading');
     const blogError = document.getElementById('blogError');
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    
+    let allArticles = [];
+    let currentlyShowing = 3;
     
     try {
         // Use CORS proxy to fetch the feed
@@ -1688,19 +1700,18 @@ async function loadMediumFeed() {
             throw new Error('Invalid XML format');
         }
         
-        // Extract all articles (limit to 6 for display)
+        // Extract all articles
         const items = xmlDoc.querySelectorAll('item');
-        const articlesToShow = Array.from(items).slice(0, 6);
         
-        if (articlesToShow.length === 0) {
+        if (items.length === 0) {
             throw new Error('No articles found');
         }
         
         // Clear loading message
         blogLoading.style.display = 'none';
         
-        // Create article cards
-        articlesToShow.forEach((item, index) => {
+        // Process all articles
+        items.forEach((item, index) => {
             const title = item.querySelector('title')?.textContent || 'Untitled';
             const link = item.querySelector('link')?.textContent || '#';
             const pubDate = item.querySelector('pubDate')?.textContent || '';
@@ -1731,9 +1742,12 @@ async function loadMediumFeed() {
             // Create card element
             const card = document.createElement('div');
             card.className = 'blog-card';
+            if (index >= currentlyShowing) {
+                card.classList.add('hidden');
+            }
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
-            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            card.style.transition = `all 0.6s ease ${(index < currentlyShowing ? index : 0) * 0.1}s`;
             
             card.innerHTML = `
                 ${imageUrl ? 
@@ -1753,12 +1767,42 @@ async function loadMediumFeed() {
             `;
             
             blogGrid.appendChild(card);
+            allArticles.push(card);
             
-            // Trigger animation
-            setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, 50);
+            // Trigger animation for initially visible cards
+            if (index < currentlyShowing) {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 50);
+            }
+        });
+        
+        // Show "Show More" button if there are more than 3 articles
+        if (allArticles.length > currentlyShowing) {
+            showMoreBtn.style.display = 'inline-flex';
+        }
+        
+        // Show More button functionality
+        showMoreBtn.addEventListener('click', function() {
+            const hiddenCards = allArticles.filter(card => card.classList.contains('hidden'));
+            const cardsToShow = hiddenCards.slice(0, 3);
+            
+            cardsToShow.forEach((card, index) => {
+                card.classList.remove('hidden');
+                card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 50);
+            });
+            
+            currentlyShowing += cardsToShow.length;
+            
+            // Hide button if all articles are shown
+            if (currentlyShowing >= allArticles.length) {
+                showMoreBtn.style.display = 'none';
+            }
         });
         
     } catch (error) {
