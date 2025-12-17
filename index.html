@@ -397,7 +397,7 @@
         }
 
         .tag {
-            position: sticky;
+            position: absolute;
             padding: 0.5rem 1rem;
             background: var(--bg-card);
             border: 1px solid var(--accent);
@@ -817,9 +817,20 @@
                 display: none; 
             }
 
+            .tag {
+            position: sticky;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            animation: float 3s ease-in-out infinite;
+        }
+
             .tag:nth-child(1) { top: 22%; left: 0; }
             .tag:nth-child(2) { top: 27%; right: 0; }
-            .tag:nth-child(3) { bottom: 522px; left: 0; }
+            .tag:nth-child(3) { bottom: 40%; left: 0; }
             .tag:nth-child(4) { bottom: 40%; right: 0; }
             .tag:nth-child(5) { bottom: 40%; right: 0; }
             .tag:nth-child(6) { bottom: 40%; right: 0; }
