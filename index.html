@@ -1128,15 +1128,16 @@
 
 .social-links {
     display: flex;
-    flex-direction: column;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .social-link {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.5rem;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
     background: var(--bg-card);
     border: 1px solid rgba(0, 255, 135, 0.1);
     border-radius: 12px;
@@ -1145,27 +1146,31 @@
     transition: all 0.3s ease;
     font-weight: 500;
     min-height: 48px;
+    flex: 1;
+    min-width: 120px;
 }
 
 .social-link:hover {
     background: rgba(0, 255, 135, 0.05);
     border-color: var(--accent);
-    transform: translateX(5px);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 135, 0.2);
 }
 
 .social-link:active {
-    transform: translateX(3px);
+    transform: translateY(-1px);
 }
 
 .social-icon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     color: var(--accent);
     flex-shrink: 0;
 }
 
 .social-link span {
     color: var(--text-primary);
+    font-size: 0.95rem;
 }
 
 /* Responsive adjustments */
@@ -1175,8 +1180,13 @@
         padding-top: 1.5rem;
     }
     
+    .social-links {
+        flex-direction: column;
+    }
+    
     .social-link {
-        padding: 0.875rem 1.25rem;
+        flex: unset;
+        width: 100%;
     }
 }
 
@@ -1536,7 +1546,7 @@
 
 
                 <!-- Social Media Links -->
-            <div class="social-media-section">
+           <div class="social-media-section">
                 <h3 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.2rem;">Connect With Me</h3>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/johnrua89" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Visit John Rua's LinkedIn profile">
