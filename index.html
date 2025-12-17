@@ -749,10 +749,7 @@
                 display: block;
             }
 
-            .mobile-menu,
-            .mobile-overlay {
-                display: block;
-            }
+            
 
             .theme-toggle {
                 padding: 0.6rem 1rem;
@@ -1072,20 +1069,41 @@
         })();
 
         // Mobile Menu Functions
-        function toggleMobileMenu() {
+       function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             const overlay = document.getElementById('mobileOverlay');
             const isActive = menu.classList.contains('active');
             
             if (isActive) {
+                // When closing
                 menu.classList.remove('active');
                 overlay.classList.remove('active');
+                // Use setTimeout to ensure the transition completes before hiding it completely
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 300); // 300ms matches the CSS transition time
                 document.body.style.overflow = 'auto';
             } else {
-                menu.classList.add('active');
-                overlay.classList.add('active');
+                // When opening
+                overlay.style.display = 'block'; // Show it immediately
+                setTimeout(() => {
+                    menu.classList.add('active');
+                    overlay.classList.add('active');
+                }, 10); // A slight delay to allow display: block to apply
                 document.body.style.overflow = 'hidden';
             }
+        }
+
+        // Also update closeMobileMenu for consistency and immediate action
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.remove('active');
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                overlay.style.display = 'none'; // Hide it after transition
+            }, 300);
+            document.body.style.overflow = 'auto';
         }
 
         function closeMobileMenu() {
