@@ -997,6 +997,99 @@
                 min-height: 120px;
             }
         }
+
+        .blog-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 135, 0.1);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+[data-theme="light"] .blog-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.blog-content {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-date {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.blog-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.blog-card h3 a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.blog-card h3 a:hover {
+    color: var(--accent);
+}
+
+.blog-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.blog-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.blog-category {
+    background: rgba(0, 255, 135, 0.1);
+    color: var(--accent);
+    padding: 0.35rem 0.85rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.blog-placeholder {
+    width: 100%;
+    height: 200px;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+
     </style>
 </head>
 <body>
@@ -1238,28 +1331,18 @@
     </section>
 
     <section id="Blog">
-        <div class="section-title">
-            <h2>Blog &<span class="highlight"> Articles</span></h2>
-            <p>My expertise in creating exceptional digital experiences</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🎨</div>
-                <h3>Website Design</h3>
-                <p>Creating captivating and user-friendly online experiences with visually stunning layouts that reflect brand identity and engage target audiences through thoughtful typography, color palettes, and imagery.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📱</div>
-                <h3>App & Web Development</h3>
-                <p>Designing and developing innovative mobile applications and dynamic web solutions that deliver seamless, intuitive user experiences. Leveraging modern frameworks, programming languages, and best practices to build robust, scalable, and secure platforms optimized for performance across all devices.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">✨</div>
-                <h3>UX/UI Design</h3>
-                <p>Crafting exceptional digital experiences that blend usability, aesthetics, and user satisfaction. Through extensive research and user testing, designing intuitive and user-centered interfaces that enhance engagement.</p>
-            </div>
-        </div>
-    </section>
+    <div class="section-title">
+        <h2>Blog & <span class="highlight">Articles</span></h2>
+        <p>Latest writings and insights from my Medium blog</p>
+    </div>
+    <div id="blogLoading" style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+        Loading articles...
+    </div>
+    <div id="blogError" style="display: none; text-align: center; color: #ff5757; padding: 2rem;">
+        Failed to load articles. Please try again later.
+    </div>
+    <div class="services-grid" id="blogGrid"></div>
+</section>
 
 
     <!-- Education Section -->
@@ -1575,6 +1658,124 @@
                 observer.observe(el);
             });
         });
+
+
+// Fetch and display Medium RSS feed
+async function loadMediumFeed() {
+    const feedUrl = 'https://medium.com/feed/@Jrua89';
+    const blogGrid = document.getElementById('blogGrid');
+    const blogLoading = document.getElementById('blogLoading');
+    const blogError = document.getElementById('blogError');
+    
+    try {
+        // Use CORS proxy to fetch the feed
+        const proxyUrl = 'https://api.allorigins.win/raw?url=';
+        const response = await fetch(proxyUrl + encodeURIComponent(feedUrl));
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch feed');
+        }
+        
+        const xmlText = await response.text();
+        
+        // Parse XML using DOMParser
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+        
+        // Check for parsing errors
+        const parserError = xmlDoc.querySelector('parsererror');
+        if (parserError) {
+            throw new Error('Invalid XML format');
+        }
+        
+        // Extract all articles (limit to 6 for display)
+        const items = xmlDoc.querySelectorAll('item');
+        const articlesToShow = Array.from(items).slice(0, 6);
+        
+        if (articlesToShow.length === 0) {
+            throw new Error('No articles found');
+        }
+        
+        // Clear loading message
+        blogLoading.style.display = 'none';
+        
+        // Create article cards
+        articlesToShow.forEach((item, index) => {
+            const title = item.querySelector('title')?.textContent || 'Untitled';
+            const link = item.querySelector('link')?.textContent || '#';
+            const pubDate = item.querySelector('pubDate')?.textContent || '';
+            const description = item.querySelector('description')?.textContent || '';
+            const categories = Array.from(item.querySelectorAll('category')).map(cat => cat.textContent);
+            
+            // Extract image from content
+            let imageUrl = '';
+            const contentEncoded = item.querySelector('encoded')?.textContent || description;
+            const imgMatch = contentEncoded.match(/<img[^>]+src="([^">]+)"/);
+            if (imgMatch) {
+                imageUrl = imgMatch[1];
+            }
+            
+            // Format date
+            const formattedDate = pubDate ? new Date(pubDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            }) : '';
+            
+            // Strip HTML from description
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = description;
+            const plainDescription = tempDiv.textContent || tempDiv.innerText || '';
+            const truncatedDescription = plainDescription.substring(0, 150) + '...';
+            
+            // Create card element
+            const card = document.createElement('div');
+            card.className = 'blog-card';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            
+            card.innerHTML = `
+                ${imageUrl ? 
+                    `<img src="${imageUrl}" alt="${title}" class="blog-image">` : 
+                    `<div class="blog-placeholder">📝</div>`
+                }
+                <div class="blog-content">
+                    <div class="blog-date">${formattedDate}</div>
+                    <h3><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
+                    <p class="blog-description">${truncatedDescription}</p>
+                    ${categories.length > 0 ? `
+                        <div class="blog-categories">
+                            ${categories.slice(0, 3).map(cat => `<span class="blog-category">${cat}</span>`).join('')}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+            
+            blogGrid.appendChild(card);
+            
+            // Trigger animation
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 50);
+        });
+        
+    } catch (error) {
+        console.error('Error loading Medium feed:', error);
+        blogLoading.style.display = 'none';
+        blogError.style.display = 'block';
+        blogError.textContent = 'Failed to load articles. Please visit my Medium profile directly.';
+    }
+}
+
+// Load feed when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadMediumFeed);
+} else {
+    loadMediumFeed();
+}
+
     </script>
 </body>
 </html>
