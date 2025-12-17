@@ -1078,14 +1078,11 @@
                 // When closing
                 menu.classList.remove('active');
                 overlay.classList.remove('active');
-                // Use setTimeout to ensure the transition completes before hiding it completely
-                setTimeout(() => {
-                    overlay.style.display = 'none';
-                }, 300); // 300ms matches the CSS transition time
+              
                 document.body.style.overflow = 'auto';
             } else {
                 // When opening
-                overlay.style.display = 'block'; // Show it immediately
+              
                 setTimeout(() => {
                     menu.classList.add('active');
                     overlay.classList.add('active');
@@ -1100,9 +1097,7 @@
             const overlay = document.getElementById('mobileOverlay');
             menu.classList.remove('active');
             overlay.classList.remove('active');
-            setTimeout(() => {
-                overlay.style.display = 'none'; // Hide it after transition
-            }, 300);
+           
             document.body.style.overflow = 'auto';
         }
 
