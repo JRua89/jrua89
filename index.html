@@ -614,27 +614,17 @@
         }
 
         /* Education Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 3rem;
+        .timelines-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--gradient);
-        }
-
-        .timeline-item {
-            margin-bottom: 3rem;
+        .timeline-section {
             position: relative;
         }
 
-          .timeline-section h3 {
+        .timeline-section h3 {
             text-align: center;
             font-size: 1.5rem;
             margin-bottom: 30px;
@@ -643,45 +633,85 @@
             border-bottom: 2px solid #00d4ff;
         }
 
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #00d4ff, #0066ff);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -3.5rem;
+            left: -46px;
             top: 0;
             width: 15px;
             height: 15px;
-            background: var(--accent);
+            background: #00d4ff;
+            border: 3px solid #1a1a2e;
             border-radius: 50%;
-            border: 3px solid var(--bg-dark);
+            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2);
         }
 
         .timeline-content {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 255, 135, 0.1);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 3px solid #00d4ff;
+            transition: all 0.3s ease;
         }
 
-        [data-theme="light"] .timeline-content {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        .timeline-content:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2);
         }
 
         .timeline-date {
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            display: inline-block;
+            background: #00d4ff;
+            color: #1a1a2e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
 
         .timeline-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: #fff;
+            border: none;
+            text-align: left;
+            padding: 0;
         }
 
         .timeline-content h4 {
-            color: var(--text-secondary);
+            font-size: 1rem;
+            color: #00d4ff;
+            margin-bottom: 12px;
             font-weight: 500;
-            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: #d1d5db;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
          /* Responsive Design */
