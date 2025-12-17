@@ -1269,13 +1269,30 @@
         }
 
         // Theme management
-        function setThemeBasedOnTime() {
-            const hour = new Date().getHours();
-            const isLightMode = hour >= 6 && hour < 18;
-            const theme = isLightMode ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', theme);
-            updateThemeToggle(theme);
-        }
+            function setThemeBasedOnTime() {
+                const hour = new Date().getHours();
+                const isLightMode = hour >= 6 && hour < 18;
+                const theme = isLightMode ? 'light' : 'dark';
+                applyTheme(theme);
+            }
+
+            // Add mode 'time' and use it similarly
+            function setThemeSource(source) {
+                localStorage.setItem('theme-source', source);
+                if (source === 'system') {
+                    applyTheme(getSystemTheme());
+                } else if (source === 'time') {
+                    setThemeBasedOnTime();
+                } else {
+                    applyTheme(source); // 'light' or 'dark'
+                }
+            }
+
+            // Optional: re-evaluate time every hour (or on route/section change)
+            setInterval(() => {
+                const source = localStorage.getItem('theme-source') || 'system';
+                if (source === 'time') setThemeSource(source);  if (source === 'time') setThemeBasedOnTime();
+            }, 30 * 30 * 1000); // Every 30 minutes
 
         function updateThemeToggle(theme) {
             const icon = document.getElementById('themeIcon');
