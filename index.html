@@ -396,8 +396,8 @@
             pointer-events: none;
         }
 
-        .tag {
-            position: absolute;
+        .tag-presentation {
+            position: sticky;
             padding: 0.5rem 1rem;
             background: var(--bg-card);
             border: 1px solid var(--accent);
@@ -407,22 +407,22 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        .tag:nth-child(1) { 
+        .tag-presentation:nth-child(1) { 
             top: 5%; 
             left: -15%; 
             animation-delay: 0s; 
         }
-        .tag:nth-child(2) { 
+        .tag-presentation:nth-child(2) { 
             top: 25%; 
             right: -15%; 
             animation-delay: 0.5s; 
         }
-        .tag:nth-child(3) { 
+        .tag-presentation:nth-child(3) { 
             bottom: 25%; 
             left: -10%; 
             animation-delay: 1s; 
         }
-        .tag:nth-child(4) { 
+        .tag-presentation:nth-child(4) { 
             bottom: 5%; 
             right: -10%; 
             animation-delay: 1.5s; 
@@ -1095,17 +1095,17 @@
         <div style="margin-top: 3rem; text-align: center;">
             <p style="color: var(--text-secondary); margin-bottom: 1rem;">Technologies & Tools</p>
             <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
-                <span class="tag">WordPress</span>
-                <span class="tag">PHP</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">HTML5</span>
-                <span class="tag">CSS/SASS</span>
-                <span class="tag">React</span>
-                <span class="tag">Vue.js</span>
-                <span class="tag">Laravel</span>
-                <span class="tag">Linux</span>
-                <span class="tag">Python</span>
-                <span class="tag">Jira</span>
+                <span class="tag-presentation">WordPress</span>
+                <span class="tag-presentation">PHP</span>
+                <span class="tag-presentation">JavaScript</span>
+                <span class="tag-presentation">HTML5</span>
+                <span class="tag-presentation">CSS/SASS</span>
+                <span class="tag-presentation">React</span>
+                <span class="tag-presentation">Vue.js</span>
+                <span class="tag-presentation">Laravel</span>
+                <span class="tag-presentation">Linux</span>
+                <span class="tag-presentation">Python</span>
+                <span class="tag-presentation">Jira</span>
             </div>
         </div>
     </section>
