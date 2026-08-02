@@ -1,9 +1,6 @@
 {
   "hosting": {
-      "cors": {
-        "origins": ["https://johnrua.com"]
-      },
-    "public": "y",
+    "public": ".",
     "headers": [ {
       "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
       "headers": [ {
@@ -27,6 +24,24 @@
         "value": "max-age=7200"
       } ]
     }, {
+      "source": "/sw.js",
+      "headers": [ {
+        "key": "Cache-Control",
+        "value": "no-cache, max-age=0, must-revalidate"
+      }, {
+        "key": "Service-Worker-Allowed",
+        "value": "/"
+      } ]
+    }, {
+      "source": "/site.webmanifest",
+      "headers": [ {
+        "key": "Cache-Control",
+        "value": "no-cache, max-age=0, must-revalidate"
+      }, {
+        "key": "Content-Type",
+        "value": "application/manifest+json"
+      } ]
+    }, {
       "source": "404.html",
       "headers": [ {
         "key": "Cache-Control",
@@ -42,40 +57,63 @@
   ],
     "ignore": [
       "firebase.json",
+      "firestore.rules",
+      "firestore.indexes.json",
+      "README.md",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "functions/**"
     ],
     "rewrites": [
+      {
+        "source": "/api/push/subscribe",
+        "function": "pushSubscribe"
+      },
+      {
+        "source": "/api/push/unsubscribe",
+        "function": "pushUnsubscribe"
+      },
+      {
+        "source": "/api/push/send",
+        "function": "pushSend"
+      },
       {
         "source": "**",
         "destination": "/index.html"
       }
     ]
   },
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs20",
+    "ignore": [
+      "node_modules",
+      ".git",
+      ".env",
+      ".env.*",
+      "firebase-debug.log",
+      "firebase-debug.*.log"
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
   "emulators": {
     "hosting": {
       "port": 5000
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
     },
     "ui": {
       "enabled": true
     },
     "singleProjectMode": true
-  },
-    "uid": "b7ae2b61-f954-483e-94d6-716d68c7ffa0",
-    "token": {
-      "sub": "b7ae2b61-f954-483e-94d6-716d68c7ffa0",
-      "authFields": {
-        "email": "Jrua89@gmail.com",
-        "email_verified": false,
-        "phone_number": "REDACTED",
-        "name": "John Mckenny Rua"
-      },
-      "firebase": {
-        "sign_in_provider": "google.com"
-      }
-    }
-
-
+  }
 }
 
 

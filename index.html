@@ -2015,6 +2015,120 @@ if (!document.getElementById('modal-root')) {
           data-sponsor-link="https://firstreply.app"
           src="https://anythingllm-web.test/widget/firstreply.js?v=1784408107"
           defer></script>
+
+    <!-- PWA: service worker registration + push notification subscription -->
+    <script>
+    (function () {
+        if (!('serviceWorker' in navigator)) return;
+
+        // VAPID public key. Safe to expose — it's the public half of the pair.
+        // Must match VAPID_PUBLIC_KEY in functions/.env.local and whatever the
+        // server is configured with, or sends fail with 403.
+        var VAPID_PUBLIC_KEY = 'BHi_nqjRxaXJZNewHPD-mXZi__kmEgq0aSZOCQL3eXojfbjilKZydTuklLE1AL0lKTx1KkV9fmwOqBWDONMJrxU';
+        // The site is served by GitHub Pages, which can't run the /api/push/**
+        // rewrites in firebase.json — so call the Cloud Functions directly.
+        // These are cross-origin, which is why the functions send CORS headers
+        // and answer the OPTIONS preflight.
+        //
+        // Confirm the exact URLs against the `firebase deploy` output: 2nd-gen
+        // functions also get a *.run.app URL, and if this hostname 404s, use
+        // the one the CLI printed.
+        var API_BASE = 'https://us-central1-johnrua-site.cloudfunctions.net';
+        var SUBSCRIBE_ENDPOINT = API_BASE + '/pushSubscribe';
+        var UNSUBSCRIBE_ENDPOINT = API_BASE + '/pushUnsubscribe';
+
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/sw.js', { scope: '/' })
+                .then(function (reg) {
+                    // Activate a waiting update straight away.
+                    if (reg.waiting) reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+
+                    reg.addEventListener('updatefound', function () {
+                        var sw = reg.installing;
+                        if (!sw) return;
+                        sw.addEventListener('statechange', function () {
+                            if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+                                sw.postMessage({ type: 'SKIP_WAITING' });
+                            }
+                        });
+                    });
+
+                    window.jrPush = makePushApi(reg);
+                })
+                .catch(function (err) {
+                    console.error('Service worker registration failed:', err);
+                });
+
+            var refreshing = false;
+            navigator.serviceWorker.addEventListener('controllerchange', function () {
+                if (refreshing) return;
+                refreshing = true;
+                window.location.reload();
+            });
+        });
+
+        function urlBase64ToUint8Array(base64String) {
+            var padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+            var base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+            var raw = window.atob(base64);
+            var out = new Uint8Array(raw.length);
+            for (var i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
+            return out;
+        }
+
+        function makePushApi(reg) {
+            return {
+                supported: function () {
+                    return 'PushManager' in window && 'Notification' in window;
+                },
+                getSubscription: function () {
+                    return reg.pushManager.getSubscription();
+                },
+                // Call this from a click handler — browsers reject permission
+                // prompts that aren't tied to a user gesture.
+                subscribe: function () {
+                    if (!this.supported()) {
+                        return Promise.reject(new Error('Push is not supported in this browser.'));
+                    }
+                    if (!VAPID_PUBLIC_KEY) {
+                        return Promise.reject(new Error('Set VAPID_PUBLIC_KEY before subscribing.'));
+                    }
+                    return Notification.requestPermission().then(function (permission) {
+                        if (permission !== 'granted') {
+                            throw new Error('Notification permission: ' + permission);
+                        }
+                        return reg.pushManager.subscribe({
+                            userVisibleOnly: true,
+                            applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+                        });
+                    }).then(function (sub) {
+                        return fetch(SUBSCRIBE_ENDPOINT, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(sub)
+                        }).then(function () { return sub; });
+                    });
+                },
+                unsubscribe: function () {
+                    return reg.pushManager.getSubscription().then(function (sub) {
+                        if (!sub) return false;
+                        var endpoint = sub.endpoint;
+                        return sub.unsubscribe().then(function (ok) {
+                            // Tell the server too, so it isn't left pushing to a
+                            // dead endpoint until the first 410 prunes it.
+                            return fetch(UNSUBSCRIBE_ENDPOINT, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ endpoint: endpoint })
+                            }).catch(function () { /* local unsubscribe already succeeded */ })
+                              .then(function () { return ok; });
+                        });
+                    });
+                }
+            };
+        }
+    })();
+    </script>
 </body>
 
 </html>

@@ -30,6 +30,18 @@ Header set Cache-Control "max-age=31536000"
     Header set Cache-Control "public, max-age=31536000, immutable"
 </FilesMatch>
 
+# PWA: the service worker and manifest must never be served from a long cache,
+# or updates to them will not reach installed clients. Must stay after the
+# generic .js rule above so it wins.
+<FilesMatch "^(sw\.js|site\.webmanifest)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+    Header set Service-Worker-Allowed "/"
+</FilesMatch>
+
+<IfModule mod_mime.c>
+    AddType application/manifest+json .webmanifest
+</IfModule>
+
 # BEGIN Expire headers  
 <IfModule mod_expires.c>  
   # Turn on the module.
