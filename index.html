@@ -1197,6 +1197,113 @@
     display: block;
 }
 
+        /* Push notification opt-in prompt */
+        .push-prompt {
+            position: fixed;
+            /* Anchored bottom-left: the support chat widget occupies bottom-right. */
+            left: 24px;
+            bottom: 24px;
+            transform: translateY(160%);
+            width: min(400px, calc(100vw - 32px));
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid rgba(128, 128, 128, 0.25);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+            /* Above the support chat widget, which sits very high itself. */
+            z-index: 2147483000;
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, visibility 0.35s;
+        }
+
+        .push-prompt.visible {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .push-prompt__head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .push-prompt__icon {
+            flex: 0 0 40px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .push-prompt__title {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .push-prompt__body {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0 0 16px;
+        }
+
+        .push-prompt__actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .push-prompt__btn {
+            font: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: 0;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .push-prompt__btn:hover { opacity: 0.85; }
+
+        .push-prompt__btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .push-prompt__btn--allow {
+            background: var(--gradient);
+            color: #0a0a0a;
+        }
+
+        .push-prompt__btn--dismiss {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid rgba(128, 128, 128, 0.3);
+        }
+
+        .push-prompt__btn[disabled] { opacity: 0.6; cursor: default; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .push-prompt { transition: opacity 0.2s ease, visibility 0.2s; }
+            .push-prompt.visible { transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .push-prompt { left: 16px; right: 16px; bottom: 16px; padding: 16px; width: auto; }
+            .push-prompt__actions { flex-direction: column-reverse; }
+            .push-prompt__btn { width: 100%; }
+        }
+
     </style>
 </head>
 <body>
@@ -2019,6 +2126,22 @@ if (!document.getElementById('modal-root')) {
           src="https://anythingllm-web.test/widget/firstreply.js?v=1784408107"
           defer></script>
 
+    <!-- Push opt-in prompt. Hidden by default; shown only by the logic below. -->
+    <div class="push-prompt" id="pushPrompt" role="dialog" aria-modal="false"
+         aria-labelledby="pushPromptTitle" aria-describedby="pushPromptBody" hidden>
+        <div class="push-prompt__head">
+            <div class="push-prompt__icon" aria-hidden="true">🔔</div>
+            <h2 class="push-prompt__title" id="pushPromptTitle">Get notified</h2>
+        </div>
+        <p class="push-prompt__body" id="pushPromptBody">
+            I'll send an occasional note when I publish new work or a blog post. No spam, and you can turn it off any time.
+        </p>
+        <div class="push-prompt__actions">
+            <button type="button" class="push-prompt__btn push-prompt__btn--dismiss" id="pushPromptNo">Not now</button>
+            <button type="button" class="push-prompt__btn push-prompt__btn--allow" id="pushPromptYes">Enable</button>
+        </div>
+    </div>
+
     <!-- PWA: service worker registration + push notification subscription -->
     <script>
     (function () {
@@ -2051,6 +2174,7 @@ if (!document.getElementById('modal-root')) {
                     });
 
                     window.jrPush = makePushApi(reg);
+                    maybeShowPrompt(window.jrPush);
                 })
                 .catch(function (err) {
                     console.error('Service worker registration failed:', err);
@@ -2123,6 +2247,96 @@ if (!document.getElementById('modal-root')) {
                     });
                 }
             };
+        }
+
+        /* ---------------------------------------- opt-in prompt ---------- */
+
+        var DISMISS_KEY = 'jr-push-dismissed-at';
+        var DISMISS_DAYS = 60;      // don't re-ask for this long after "Not now"
+        var SHOW_DELAY_MS = 12000;  // let people actually read the page first
+
+        function dismissedRecently() {
+            try {
+                var at = parseInt(localStorage.getItem(DISMISS_KEY) || '0', 10);
+                if (!at) return false;
+                return (Date.now() - at) < DISMISS_DAYS * 24 * 60 * 60 * 1000;
+            } catch (err) {
+                return false; // private mode / storage blocked — treat as not dismissed
+            }
+        }
+
+        function rememberDismissal() {
+            try { localStorage.setItem(DISMISS_KEY, String(Date.now())); } catch (err) {}
+        }
+
+        function maybeShowPrompt(push) {
+            if (!push || !push.supported()) return;
+
+            // 'granted' means they already said yes somewhere; 'denied' means the
+            // browser will never prompt again, so showing our UI would be a lie.
+            if (Notification.permission !== 'default') return;
+            if (dismissedRecently()) return;
+
+            push.getSubscription().then(function (existing) {
+                if (existing) return; // already subscribed on this device
+                setTimeout(showPrompt, SHOW_DELAY_MS);
+            }).catch(function () { /* can't tell — stay quiet */ });
+        }
+
+        function showPrompt() {
+            var el = document.getElementById('pushPrompt');
+            var yes = document.getElementById('pushPromptYes');
+            var no = document.getElementById('pushPromptNo');
+            if (!el || !yes || !no) return;
+
+            // Don't interrupt someone mid-form.
+            var active = document.activeElement;
+            if (active && active.closest && active.closest('#contactForm')) {
+                setTimeout(showPrompt, 20000);
+                return;
+            }
+
+            // The support chat widget injects itself at the end of <body> with a
+            // max z-index. Move the prompt after it so DOM order breaks the tie.
+            document.body.appendChild(el);
+
+            el.hidden = false;
+            // Next frame, so the transition runs instead of snapping.
+            requestAnimationFrame(function () { el.classList.add('visible'); });
+
+            function close() {
+                el.classList.remove('visible');
+                setTimeout(function () { el.hidden = true; }, 400);
+                document.removeEventListener('keydown', onKey);
+            }
+
+            function onKey(e) {
+                if (e.key === 'Escape') { rememberDismissal(); close(); }
+            }
+            document.addEventListener('keydown', onKey);
+
+            no.addEventListener('click', function () {
+                rememberDismissal();
+                close();
+            }, { once: true });
+
+            yes.addEventListener('click', function () {
+                yes.disabled = true;
+                no.disabled = true;
+                yes.textContent = 'Enabling…';
+
+                // Permission is requested inside this click handler — browsers
+                // reject prompts that aren't tied to a user gesture.
+                window.jrPush.subscribe().then(function () {
+                    yes.textContent = 'Done ✓';
+                    setTimeout(close, 1200);
+                }).catch(function (err) {
+                    console.error('Push subscribe failed:', err);
+                    // Denied or errored: don't nag again either way.
+                    rememberDismissal();
+                    close();
+                });
+            }, { once: true });
         }
     })();
     </script>
