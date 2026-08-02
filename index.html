@@ -1735,6 +1735,9 @@ function closeMobileMenu() {
                         formStatus.style.display = 'none';
                     }, 5000);
                 }, function(error) {
+                    // EmailJS rejects with { status, text } — surface both, or the
+                    // real reason (bad template, disconnected service, quota) is invisible.
+                    console.error('EmailJS send failed:', error && error.status, error && error.text, error);
                     formStatus.className = 'form-status error';
                     formStatus.textContent = '✗ Failed to send message. Please try again or email directly at Jrua89@gmail.com';
                     formStatus.style.display = 'block';
