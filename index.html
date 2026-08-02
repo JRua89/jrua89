@@ -2148,8 +2148,8 @@ if (!document.getElementById('modal-root')) {
         if (!('serviceWorker' in navigator)) return;
 
         // VAPID public key. Safe to expose — it's the public half of the pair.
-        // Must match VAPID_PUBLIC_KEY in functions/.env.local and whatever the
-        // server is configured with, or sends fail with 403.
+        // Must match VAPID_PUBLIC_KEY in worker/.dev.vars and the deployed
+        // Worker secret, or sends fail with 403.
         var VAPID_PUBLIC_KEY = 'BHi_nqjRxaXJZNewHPD-mXZi__kmEgq0aSZOCQL3eXojfbjilKZydTuklLE1AL0lKTx1KkV9fmwOqBWDONMJrxU';
         // Same-origin: a Cloudflare Worker is routed at johnrua.com/api/push/*,
         // so these never leave the origin — no CORS, no preflight, and nothing

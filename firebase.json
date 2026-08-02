@@ -1,113 +1,96 @@
 {
   "hosting": {
     "public": ".",
-    "headers": [ {
-      "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
-      "headers": [ {
-        "key": "Access-Control-Allow-Origin",
-        "value": "*"
-      }, {
-        "key": "Access-Control-Allow-Credentials",
-        "value": "true"
-      }, 
+    "headers": [
       {
-        "key": "Access-Control-Allow-Methods",
-        "value": "GET, POST, OPTIONS"
-      },{
-        "key": "Access-Control-Allow-Headers",
-        "value": "Access-Control-Allow-Origin, Access-Control-Allow-Credentials"
-      } ]
-    }, {
-      "source": "**/*.@(jpg|jpeg|gif|png)",
-      "headers": [ {
-        "key": "Cache-Control",
-        "value": "max-age=7200"
-      } ]
-    }, {
-      "source": "/sw.js",
-      "headers": [ {
-        "key": "Cache-Control",
-        "value": "no-cache, max-age=0, must-revalidate"
-      }, {
-        "key": "Service-Worker-Allowed",
-        "value": "/"
-      } ]
-    }, {
-      "source": "/site.webmanifest",
-      "headers": [ {
-        "key": "Cache-Control",
-        "value": "no-cache, max-age=0, must-revalidate"
-      }, {
-        "key": "Content-Type",
-        "value": "application/manifest+json"
-      } ]
-    }, {
-      "source": "404.html",
-      "headers": [ {
-        "key": "Cache-Control",
-        "value": "max-age=300"
-      } ]
-    } ],
-  "redirects": [
-    {
-      "source": "https://www.johnrua.com",
-      "destination": "https://johnrua.com",
-      "type": 301
-    }
-  ],
+        "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          },
+          {
+            "key": "Access-Control-Allow-Credentials",
+            "value": "true"
+          },
+          {
+            "key": "Access-Control-Allow-Methods",
+            "value": "GET, POST, OPTIONS"
+          },
+          {
+            "key": "Access-Control-Allow-Headers",
+            "value": "Access-Control-Allow-Origin, Access-Control-Allow-Credentials"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=7200"
+          }
+        ]
+      },
+      {
+        "source": "/sw.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, max-age=0, must-revalidate"
+          },
+          {
+            "key": "Service-Worker-Allowed",
+            "value": "/"
+          }
+        ]
+      },
+      {
+        "source": "/site.webmanifest",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, max-age=0, must-revalidate"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/manifest+json"
+          }
+        ]
+      },
+      {
+        "source": "404.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=300"
+          }
+        ]
+      }
+    ],
+    "redirects": [
+      {
+        "source": "https://www.johnrua.com",
+        "destination": "https://johnrua.com",
+        "type": 301
+      }
+    ],
     "ignore": [
       "firebase.json",
-      "firestore.rules",
-      "firestore.indexes.json",
       "README.md",
       "**/.*",
-      "**/node_modules/**",
-      "functions/**"
+      "**/node_modules/**"
     ],
     "rewrites": [
-      {
-        "source": "/api/push/subscribe",
-        "function": "pushSubscribe"
-      },
-      {
-        "source": "/api/push/unsubscribe",
-        "function": "pushUnsubscribe"
-      },
-      {
-        "source": "/api/push/send",
-        "function": "pushSend"
-      },
       {
         "source": "**",
         "destination": "/index.html"
       }
     ]
   },
-  "functions": {
-    "source": "functions",
-    "runtime": "nodejs20",
-    "ignore": [
-      "node_modules",
-      ".git",
-      ".env",
-      ".env.*",
-      "firebase-debug.log",
-      "firebase-debug.*.log"
-    ]
-  },
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
   "emulators": {
     "hosting": {
       "port": 5000
-    },
-    "functions": {
-      "port": 5001
-    },
-    "firestore": {
-      "port": 8080
     },
     "ui": {
       "enabled": true
@@ -115,5 +98,3 @@
     "singleProjectMode": true
   }
 }
-
-
