@@ -2028,17 +2028,11 @@ if (!document.getElementById('modal-root')) {
         // Must match VAPID_PUBLIC_KEY in functions/.env.local and whatever the
         // server is configured with, or sends fail with 403.
         var VAPID_PUBLIC_KEY = 'BHi_nqjRxaXJZNewHPD-mXZi__kmEgq0aSZOCQL3eXojfbjilKZydTuklLE1AL0lKTx1KkV9fmwOqBWDONMJrxU';
-        // The site is served by GitHub Pages, which can't run the /api/push/**
-        // rewrites in firebase.json — so call the Cloud Functions directly.
-        // These are cross-origin, which is why the functions send CORS headers
-        // and answer the OPTIONS preflight.
-        //
-        // Confirm the exact URLs against the `firebase deploy` output: 2nd-gen
-        // functions also get a *.run.app URL, and if this hostname 404s, use
-        // the one the CLI printed.
-        var API_BASE = 'https://us-central1-johnrua-site.cloudfunctions.net';
-        var SUBSCRIBE_ENDPOINT = API_BASE + '/pushSubscribe';
-        var UNSUBSCRIBE_ENDPOINT = API_BASE + '/pushUnsubscribe';
+        // Same-origin: a Cloudflare Worker is routed at johnrua.com/api/push/*,
+        // so these never leave the origin — no CORS, no preflight, and nothing
+        // extra needed in the CSP's connect-src.
+        var SUBSCRIBE_ENDPOINT = '/api/push/subscribe';
+        var UNSUBSCRIBE_ENDPOINT = '/api/push/unsubscribe';
 
         window.addEventListener('load', function () {
             navigator.serviceWorker.register('/sw.js', { scope: '/' })

@@ -184,10 +184,9 @@ self.addEventListener('pushsubscriptionchange', (event) => {
       applicationServerKey: appServerKey
     });
 
-    // Absolute URL: the site is on GitHub Pages, so the backend is cross-origin.
-    // Keep this host in sync with API_BASE in index.html.
+    // Same-origin: the Cloudflare Worker is routed at /api/push/* on this host.
     try {
-      await fetch('https://us-central1-johnrua-site.cloudfunctions.net/pushSubscribe', {
+      await fetch('/api/push/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newSub)

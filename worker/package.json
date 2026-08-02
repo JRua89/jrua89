@@ -1,0 +1,14 @@
+{
+  "name": "johnrua-push-worker",
+  "description": "Web Push backend for johnrua.com on Cloudflare Workers",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  }
+}
