@@ -8,8 +8,8 @@
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui", "browser"],
   "orientation": "any",
-  "background_color": "#0a0a0a",
-  "theme_color": "#0a0a0a",
+  "background_color": "#f5f5f5",
+  "theme_color": "#f5f5f5",
   "lang": "en-US",
   "dir": "ltr",
   "categories": ["business", "productivity", "portfolio"],
@@ -52,6 +52,29 @@
       "purpose": "maskable"
     }
   ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-1280x800.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "John Rua's portfolio homepage on desktop"
+    },
+    {
+      "src": "/screenshots/mobile-412x915.png",
+      "sizes": "412x915",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "John Rua's portfolio homepage on mobile"
+    }
+  ],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "edge_side_panel": {
+    "preferred_width": 480
+  },
   "shortcuts": [
     {
       "name": "Contact John",
