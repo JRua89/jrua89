@@ -271,20 +271,64 @@ async function handleSend(request, env) {
   return json({ sent, removed, failed });
 }
 
+/* ----------------------------------------------------------------- blog */
+
+const MEDIUM_FEED = 'https://medium.com/feed/@Jrua89';
+
+// Medium's RSS feed sends no CORS headers, so the browser can't fetch it
+// directly. Proxying it here keeps the request same-origin (no CSP entry
+// needed) and removes the dependency on a third-party CORS proxy.
+async function handleBlog(request, env, ctx) {
+  const cache = caches.default;
+  const cacheKey = new Request(new URL('/api/blog', request.url).toString(), { method: 'GET' });
+
+  const hit = await cache.match(cacheKey);
+  if (hit) return hit;
+
+  const upstream = await fetch(MEDIUM_FEED, {
+    headers: { 'User-Agent': 'johnrua.com feed reader' },
+    cf: { cacheTtl: 1800, cacheEverything: true }
+  });
+
+  if (!upstream.ok) {
+    return json({ error: 'Upstream feed unavailable', status: upstream.status }, 502);
+  }
+
+  const xml = await upstream.text();
+  const res = new Response(xml, {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/rss+xml; charset=utf-8',
+      // 30 min at the edge; the feed changes rarely and this keeps us well
+      // inside the Workers free tier even under traffic.
+      'Cache-Control': 'public, max-age=1800'
+    }
+  });
+
+  if (ctx && ctx.waitUntil) ctx.waitUntil(cache.put(cacheKey, res.clone()));
+  return res;
+}
+
 /* ------------------------------------------------------------------ entry */
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    if (!url.pathname.startsWith('/api/push/')) {
-      return json({ error: 'Not found' }, 404);
-    }
-    if (request.method !== 'POST') {
-      return json({ error: 'Method not allowed' }, 405);
-    }
-
     try {
+      // Read-only feed proxy.
+      if (url.pathname === '/api/blog') {
+        if (request.method !== 'GET') return json({ error: 'Method not allowed' }, 405);
+        return await handleBlog(request, env, ctx);
+      }
+
+      if (!url.pathname.startsWith('/api/push/')) {
+        return json({ error: 'Not found' }, 404);
+      }
+      if (request.method !== 'POST') {
+        return json({ error: 'Method not allowed' }, 405);
+      }
+
       switch (url.pathname) {
         case '/api/push/subscribe':   return await handleSubscribe(request, env);
         case '/api/push/unsubscribe': return await handleUnsubscribe(request, env);
