@@ -6,7 +6,9 @@ compatibility_date = "2024-11-06"
 # same-origin: no CORS, and no extra connect-src entry in the CSP.
 routes = [
   { pattern = "johnrua.com/api/push/*", zone_name = "johnrua.com" },
-  { pattern = "johnrua.com/api/blog", zone_name = "johnrua.com" }
+  # Trailing * so a query string (?cb=…) still routes here; Cloudflare route
+  # patterns are exact matches otherwise.
+  { pattern = "johnrua.com/api/blog*", zone_name = "johnrua.com" }
 ]
 
 # Subscription storage. Create with:

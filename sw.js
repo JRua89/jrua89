@@ -64,6 +64,12 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return; // let cross-origin go to the network
 
+  // Never cache API responses. Stale-while-revalidate is right for assets but
+  // wrong here: it would serve a returning visitor the previous blog feed and
+  // only refresh it for their next visit. The Worker's own edge cache already
+  // handles rate limiting for these.
+  if (url.pathname.startsWith('/api/')) return;
+
   // Navigations: network first, fall back to cached shell, then offline page.
   if (req.mode === 'navigate') {
     event.respondWith((async () => {

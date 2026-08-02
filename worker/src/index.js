@@ -274,6 +274,9 @@ async function handleSend(request, env) {
 /* ----------------------------------------------------------------- blog */
 
 const MEDIUM_FEED = 'https://medium.com/feed/@Jrua89';
+// How long the edge holds the feed. Short enough that a new Medium post shows
+// up promptly; long enough that traffic never approaches the free-tier limits.
+const FEED_TTL = 300; // 5 minutes
 
 // Medium's RSS feed sends no CORS headers, so the browser can't fetch it
 // directly. Proxying it here keeps the request same-origin (no CSP entry
@@ -287,7 +290,7 @@ async function handleBlog(request, env, ctx) {
 
   const upstream = await fetch(MEDIUM_FEED, {
     headers: { 'User-Agent': 'johnrua.com feed reader' },
-    cf: { cacheTtl: 1800, cacheEverything: true }
+    cf: { cacheTtl: FEED_TTL, cacheEverything: true }
   });
 
   if (!upstream.ok) {
@@ -299,9 +302,7 @@ async function handleBlog(request, env, ctx) {
     status: 200,
     headers: {
       'Content-Type': 'application/rss+xml; charset=utf-8',
-      // 30 min at the edge; the feed changes rarely and this keeps us well
-      // inside the Workers free tier even under traffic.
-      'Cache-Control': 'public, max-age=1800'
+      'Cache-Control': 'public, max-age=' + FEED_TTL
     }
   });
 
