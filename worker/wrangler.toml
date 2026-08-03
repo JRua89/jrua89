@@ -8,7 +8,8 @@ routes = [
   { pattern = "johnrua.com/api/push/*", zone_name = "johnrua.com" },
   # Trailing * so a query string (?cb=…) still routes here; Cloudflare route
   # patterns are exact matches otherwise.
-  { pattern = "johnrua.com/api/blog*", zone_name = "johnrua.com" }
+  { pattern = "johnrua.com/api/blog*", zone_name = "johnrua.com" },
+  { pattern = "johnrua.com/api/contact/*", zone_name = "johnrua.com" }
 ]
 
 # Subscription storage. Create with:
@@ -25,3 +26,4 @@ VAPID_SUBJECT = "mailto:jrua89@gmail.com"
 #   wrangler secret put VAPID_PUBLIC_KEY
 #   wrangler secret put VAPID_PRIVATE_KEY
 #   wrangler secret put PUSH_ADMIN_TOKEN
+#   wrangler secret put TURNSTILE_SECRET_KEY

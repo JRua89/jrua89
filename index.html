@@ -5,32 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>John Rua | Full Stack Developer</title>
     <script src="email.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="description" content="John Rua is a full stack developer specializing in PHP and JavaScript, creating fast, scalable web applications with exceptional user experiences.">
+    <meta name="description" content="John Rua is a full stack developer and Lead Developer at Kingsborough Community College, with 10+ years building PHP and JavaScript systems — campus platforms, REST integrations, and ERP with SAML single sign-on.">
     <meta name="keywords" content="web developer, PHP, JavaScript, dynamic websites, user experiences">
     <meta http-equiv="Content-Language" content="en">
     <meta name="robots" content="index, follow">
 
         <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="John Rua | Expert Full Stack Developer in PHP & JavaScript" />
-    <meta itemprop="description" content="John Rua is a full stack developer specializing in PHP and JavaScript, creating fast, scalable web applications with exceptional user experiences." />
-    <meta itemprop="image" content="https://johnrua.com/logoJR.png" />
+    <meta itemprop="description" content="Lead Developer at Kingsborough Community College. 10+ years building PHP and JavaScript systems that scale." />
+    <meta itemprop="image" content="https://johnrua.com/og-image.png" />
 
-    
+
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://johnrua.com/" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="John Rua" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="John Rua | Expert Full Stack Developer in PHP & JavaScript" />
-    <meta property="og:description" content="John Rua is a full stack developer specializing in PHP and JavaScript, creating fast, scalable web applications with exceptional user experiences." />
-    <meta property="og:image" content="https://johnrua.com/logoJR.png" />
+    <meta property="og:description" content="Lead Developer at Kingsborough Community College. 10+ years building PHP and JavaScript systems that scale." />
+    <meta property="og:image" content="https://johnrua.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="John Rua — Full Stack Developer, Lead Developer at Kingsborough Community College" />
 
-   
+
      <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:domain" content="johnrua.com">
     <meta name="twitter:title" content="John Rua | Expert Full Stack Developer in PHP & JavaScript" />
-    <meta name="twitter:description" content="John Rua is a full stack developer specializing in PHP and JavaScript, creating fast, scalable web applications with exceptional user experiences." />
-    <meta name="twitter:image" content="https://johnrua.com/logoJR.png" />
+    <meta name="twitter:description" content="Lead Developer at Kingsborough Community College. 10+ years building PHP and JavaScript systems that scale." />
+    <meta name="twitter:image" content="https://johnrua.com/og-image.png" />
+    <meta name="twitter:image:alt" content="John Rua — Full Stack Developer, Lead Developer at Kingsborough Community College" />
 
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -46,6 +51,73 @@
     
     <!-- Dark mode -->
     <meta name="theme-color" content="#1f1f1f" media="(prefers-color-scheme: dark)">
+
+    <!-- Structured data: what Google reads to build a knowledge panel. Keep
+         sameAs in sync with the social links in the contact section. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://johnrua.com/#person",
+          "name": "John Rua",
+          "givenName": "John",
+          "familyName": "Rua",
+          "url": "https://johnrua.com/",
+          "image": "https://johnrua.com/og-image.png",
+          "email": "mailto:jrua89@gmail.com",
+          "jobTitle": "Lead Developer",
+          "description": "Full stack developer with over a decade of experience building PHP and JavaScript systems, currently Lead Developer at Kingsborough Community College.",
+          "worksFor": {
+            "@type": "CollegeOrUniversity",
+            "name": "Kingsborough Community College",
+            "url": "https://www.kbcc.cuny.edu/"
+          },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "CUNY School of Professional Studies",
+            "url": "https://sps.cuny.edu/"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "New York City",
+            "addressRegion": "NY",
+            "addressCountry": "US"
+          },
+          "knowsLanguage": ["en", "es"],
+          "knowsAbout": [
+            "PHP", "JavaScript", "Laravel", "MySQL", "Microsoft SQL Server",
+            "REST API integration", "SAML single sign-on", "PowerShell automation",
+            "Bootstrap", "jQuery", "Python", "Flutter"
+          ],
+          "award": "CUNY IT Innovation Award (2017)",
+          "sameAs": [
+            "https://www.linkedin.com/in/john-rua-1b01378a/",
+            "https://github.com/jrua89",
+            "https://medium.com/@Jrua89"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://johnrua.com/#website",
+          "url": "https://johnrua.com/",
+          "name": "John Rua | Full Stack Developer",
+          "inLanguage": "en-US",
+          "publisher": { "@id": "https://johnrua.com/#person" }
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://johnrua.com/#webpage",
+          "url": "https://johnrua.com/",
+          "name": "John Rua | Full Stack Developer",
+          "isPartOf": { "@id": "https://johnrua.com/#website" },
+          "about": { "@id": "https://johnrua.com/#person" },
+          "primaryImageOfPage": "https://johnrua.com/og-image.png"
+        }
+      ]
+    }
+    </script>
 
     <style>
         * {
@@ -385,6 +457,7 @@
         .cta-buttons {
             display: flex;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -791,6 +864,78 @@
 }
 
 
+/* Honeypot: off-screen rather than display:none, which bots learned to skip */
+.hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.turnstile-container:not(:empty) {
+    margin-bottom: 1.5rem;
+}
+
+/* Proof band — verifiable numbers, sits directly under the hero */
+.proof-band {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+}
+
+.proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.proof-item {
+    background: var(--bg-card);
+    border: 1px solid rgba(0, 255, 135, 0.12);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .proof-item {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.proof-number {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* The default gradient is tuned for a black background; on white it drops
+   under 3:1 even at this size. Darken both stops for light mode. */
+[data-theme="light"] .proof-number {
+    background: linear-gradient(135deg, #00874a 0%, #006d94 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.proof-label {
+    margin-top: 0.6rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+
+@media (max-width: 768px) {
+    .proof-band {
+        padding: 0 1.5rem 3.5rem;
+    }
+}
+
+
         /* Contact Section */
         .contact-container {
             display: grid;
@@ -911,6 +1056,7 @@
             display: flex;
             gap: 2rem;
             justify-content: center;
+            flex-wrap: wrap;
             margin-bottom: 1rem;
         }
 
@@ -1368,7 +1514,8 @@
                 </p>
                 <div class="cta-buttons">
     <a href="#contact" class="btn btn-primary" aria-label="Get in touch with John Rua">Get In Touch</a>
-    <a href="#services" class="btn btn-secondary" aria-label="View John Rua's work and services">View Work</a>
+    <a href="#services" class="btn btn-secondary" aria-label="View John Rua's services">View Services</a>
+    <a href="/john-rua-resume.pdf" class="btn btn-secondary" download aria-label="Download John Rua's resume as a PDF">Download Resume</a>
 </div>
             </div>
             <div class="hero-visual">
@@ -1382,6 +1529,28 @@
             </div>
         </div>
     </section>
+
+    <!-- Proof Band -->
+    <div class="proof-band" id="highlights" aria-label="Career highlights">
+        <div class="proof-grid">
+            <div class="proof-item">
+                <div class="proof-number">10+</div>
+                <div class="proof-label">Years shipping production PHP &amp; JavaScript</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">$1.5M+</div>
+                <div class="proof-label">Grant funding won by software I built</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">2017</div>
+                <div class="proof-label">CUNY IT Innovation Award recipient</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">1</div>
+                <div class="proof-label">Campus intranet I lead, used college-wide</div>
+            </div>
+        </div>
+    </div>
 
     <!-- Services Section -->
     <section id="services">
@@ -1702,6 +1871,18 @@
                     <label for="message">Message</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
+
+                <!-- Honeypot: hidden from people, irresistible to naive bots.
+                     Not display:none — some bots skip those. -->
+                <div class="hp-field" aria-hidden="true">
+                    <label for="company">Company (leave this empty)</label>
+                    <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+                </div>
+
+                <!-- Turnstile mounts here once TURNSTILE_SITE_KEY is set below.
+                     Empty key = widget never loads and the form works as before. -->
+                <div id="turnstileContainer" class="turnstile-container"></div>
+
                 <button type="submit" class="btn btn-primary" id="submitBtn" style="border: none; cursor: pointer;" aria-label="Send contact form message">
     <span id="btnText">Send Message</span>
 </button>
@@ -1715,10 +1896,12 @@
         <a href="#home" aria-label="Return to Home section">Home</a>
         <a href="#services" aria-label="Go to Services section">Services</a>
         <a href="#skills" aria-label="Go to Skills section">Skills</a>
+        <a href="#Blog" aria-label="Go to Blog section">Blog</a>
         <a href="#education" aria-label="Go to Education section">Education</a>
         <a href="#contact" aria-label="Go to Contact section">Contact</a>
+        <a href="/john-rua-resume.pdf" download aria-label="Download John Rua's resume as a PDF">Resume</a>
     </div>
-    <p>&copy; 2025 John Rua. All Rights Reserved</p>
+    <p>&copy; <span id="footerYear">2026</span> John Rua. All Rights Reserved</p>
 </footer>
 
     <script>
@@ -1812,25 +1995,117 @@ function closeMobileMenu() {
             updateThemeToggle(newTheme);
         }
 
+        /* ------------------------------------------------- contact form spam gate
+           Three layers, cheapest first:
+             1. honeypot  — bots fill the hidden "company" field, people can't see it
+             2. time trap — a human cannot read the form and submit in under 3s
+             3. Turnstile — only active once TURNSTILE_SITE_KEY is filled in; the
+                token is verified server-side by the Worker at /api/contact/verify
+           Layers 1 and 2 fail silently (a bot told it was blocked just adapts).  */
+
+        // Paste the site key from Cloudflare dashboard > Turnstile. Empty = disabled.
+        const TURNSTILE_SITE_KEY = '';
+        const MIN_FILL_SECONDS = 3;
+
+        let formRenderedAt = Date.now();
+        let turnstileWidgetId = null;
+
+        function loadTurnstile() {
+            if (!TURNSTILE_SITE_KEY) return;
+
+            window.onTurnstileReady = function () {
+                turnstileWidgetId = window.turnstile.render('#turnstileContainer', {
+                    sitekey: TURNSTILE_SITE_KEY,
+                    theme: 'auto'
+                });
+            };
+
+            const s = document.createElement('script');
+            s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileReady';
+            s.async = true;
+            s.defer = true;
+            document.head.appendChild(s);
+        }
+
+        // Returns null when the submission looks human, or a reason string to drop it.
+        function spamReason(form) {
+            if (form.company && form.company.value.trim() !== '') return 'honeypot';
+            if ((Date.now() - formRenderedAt) / 1000 < MIN_FILL_SECONDS) return 'too-fast';
+            return null;
+        }
+
+        async function turnstilePassed(formStatus) {
+            if (!TURNSTILE_SITE_KEY) return true;
+
+            const token = window.turnstile && turnstileWidgetId !== null
+                ? window.turnstile.getResponse(turnstileWidgetId)
+                : '';
+
+            if (!token) {
+                formStatus.className = 'form-status error';
+                formStatus.textContent = '✗ Please complete the verification challenge.';
+                formStatus.style.display = 'block';
+                return false;
+            }
+
+            try {
+                const res = await fetch('/api/contact/verify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token })
+                });
+                const data = await res.json();
+                if (data && data.success) return true;
+            } catch (err) {
+                console.error('Turnstile verification failed:', err);
+            }
+
+            formStatus.className = 'form-status error';
+            formStatus.textContent = '✗ Verification failed. Please try again.';
+            formStatus.style.display = 'block';
+            if (window.turnstile && turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
+            return false;
+        }
+
         // Form submission
-        function handleSubmit(e) {
+        async function handleSubmit(e) {
             e.preventDefault();
-            
+
             const form = document.getElementById('contactForm');
             const submitBtn = document.getElementById('submitBtn');
             const btnText = document.getElementById('btnText');
             const formStatus = document.getElementById('formStatus');
-            
+
+            // Show the success state to bots too — a rejection message is just
+            // feedback they can tune against.
+            const reason = spamReason(form);
+            if (reason) {
+                console.warn('Submission dropped:', reason);
+                formStatus.className = 'form-status success';
+                formStatus.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+                formStatus.style.display = 'block';
+                form.reset();
+                return false;
+            }
+
             submitBtn.disabled = true;
             btnText.textContent = 'Sending...';
             formStatus.style.display = 'none';
-            
+
+            if (!(await turnstilePassed(formStatus))) {
+                submitBtn.disabled = false;
+                btnText.textContent = 'Send Message';
+                return false;
+            }
+
             emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
                 .then(function(response) {
                     formStatus.className = 'form-status success';
                     formStatus.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
                     formStatus.style.display = 'block';
                     form.reset();
+                    formRenderedAt = Date.now();
+                    if (window.turnstile && turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
                     submitBtn.disabled = false;
                     btnText.textContent = 'Send Message';
                     setTimeout(() => {
@@ -1897,6 +2172,14 @@ function closeMobileMenu() {
             // Contact form
             if (contactForm) {
                 contactForm.addEventListener('submit', handleSubmit);
+                formRenderedAt = Date.now();
+                loadTurnstile();
+            }
+
+            // Footer year — so the copyright can't go stale again
+            const footerYear = document.getElementById('footerYear');
+            if (footerYear) {
+                footerYear.textContent = new Date().getFullYear();
             }
 
             // Scroll animations
@@ -1914,7 +2197,7 @@ function closeMobileMenu() {
                 });
             }, observerOptions);
 
-            document.querySelectorAll('.service-card, .skill-item, .timeline-item').forEach(el => {
+            document.querySelectorAll('.service-card, .skill-item, .timeline-item, .proof-item').forEach(el => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(30px)';
                 el.style.transition = 'all 0.6s ease';
@@ -2334,6 +2617,22 @@ if (!document.getElementById('modal-root')) {
                 });
             }, { once: true });
         }
+    })();
+    </script>
+
+    <!-- Cloudflare Web Analytics — cookieless, so no consent banner needed.
+         Paste the token from Cloudflare dashboard > Web Analytics > johnrua.com.
+         Left empty the beacon simply never loads. -->
+    <script>
+    (function () {
+        var CF_BEACON_TOKEN = '';
+        if (!CF_BEACON_TOKEN) return;
+
+        var s = document.createElement('script');
+        s.defer = true;
+        s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+        s.setAttribute('data-cf-beacon', JSON.stringify({ token: CF_BEACON_TOKEN }));
+        document.head.appendChild(s);
     })();
     </script>
 </body>

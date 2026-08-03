@@ -4,7 +4,7 @@
    - Handles Web Push + notification clicks
 */
 
-const VERSION = 'v1';
+const VERSION = 'v2';
 const PRECACHE = `jr-precache-${VERSION}`;
 const RUNTIME = `jr-runtime-${VERSION}`;
 
@@ -18,6 +18,8 @@ const PRECACHE_URLS = [
   OFFLINE_URL,
   '/site.webmanifest',
   '/email.min.js',
+  '/john-rua-resume.pdf',
+  '/og-image.png',
   '/favicon.ico',
   '/favicon-32x32.png',
   '/android-chrome-192x192.png',

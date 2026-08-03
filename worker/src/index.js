@@ -310,6 +310,42 @@ async function handleBlog(request, env, ctx) {
   return res;
 }
 
+/* ------------------------------------------------------- contact / Turnstile */
+
+const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+
+// The site key is public and lives in the page; the secret must never leave the
+// Worker, which is the whole reason this route exists. Set it with:
+//   wrangler secret put TURNSTILE_SECRET_KEY
+async function handleContactVerify(request, env) {
+  if (!env.TURNSTILE_SECRET_KEY) {
+    // Not configured yet. Fail closed — a route that always says "success"
+    // is worse than no route, because the page would trust it.
+    return json({ success: false, error: 'Turnstile is not configured' }, 503);
+  }
+
+  const body = await request.json().catch(() => null);
+  if (!body || typeof body.token !== 'string' || !body.token) {
+    return json({ success: false, error: 'Missing token' }, 400);
+  }
+
+  const form = new FormData();
+  form.append('secret', env.TURNSTILE_SECRET_KEY);
+  form.append('response', body.token);
+  const ip = request.headers.get('CF-Connecting-IP');
+  if (ip) form.append('remoteip', ip);
+
+  const res = await fetch(TURNSTILE_VERIFY_URL, { method: 'POST', body: form });
+  const outcome = await res.json().catch(() => ({}));
+
+  if (!outcome.success) {
+    console.warn('Turnstile rejected:', outcome['error-codes']);
+    return json({ success: false, error: 'Verification failed' }, 403);
+  }
+
+  return json({ success: true });
+}
+
 /* ------------------------------------------------------------------ entry */
 
 export default {
@@ -321,6 +357,12 @@ export default {
       if (url.pathname === '/api/blog') {
         if (request.method !== 'GET') return json({ error: 'Method not allowed' }, 405);
         return await handleBlog(request, env, ctx);
+      }
+
+      // Contact-form bot check.
+      if (url.pathname === '/api/contact/verify') {
+        if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
+        return await handleContactVerify(request, env);
       }
 
       if (!url.pathname.startsWith('/api/push/')) {
