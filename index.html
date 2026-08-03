@@ -2381,7 +2381,18 @@ if (!document.getElementById('modal-root')) {
 <div id="dialog-portal-root" aria-live="polite"></div>
 <div id="modal-root" aria-live="polite"></div>
 
-<script
+<!-- FirstReply chat widget.
+
+     It is served from a Laravel Herd .test host and talks to localhost:3001,
+     neither of which resolves anywhere but the dev machine. Loaded in
+     production it gives visitors a dead widget plus mixed-content errors, so
+     the tag below is inert (type="text/plain", src moved to data-src) and the
+     loader underneath promotes it to a real script element only on a local
+     hostname.
+
+     Nothing about the widget's configuration changed — to adjust it, edit the
+     data-* attributes here exactly as before. -->
+<script type="text/plain" id="chatWidgetConfig"
           data-embed-id="00ef072b-b6c0-439d-8206-b9a734833cd2"
           data-ai-api-base="http://localhost:3001/api/embed"
           data-api-base="https://anythingllm-web.test"
@@ -2402,8 +2413,31 @@ if (!document.getElementById('modal-root')) {
           data-human-label="Talk to a human"
           data-sponsor-text="Powered by FirstReply"
           data-sponsor-link="https://firstreply.app"
-          src="https://anythingllm-web.test/widget/firstreply.js?v=1784408107"
-          defer></script>
+          data-src="https://anythingllm-web.test/widget/firstreply.js?v=1784408107"></script>
+
+<script>
+(function () {
+    // Herd serves the widget host as *.test; the embed API is on localhost.
+    var host = location.hostname;
+    var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '[::1]' ||
+                  /\.(test|localhost)$/.test(host);
+
+    if (!isLocal) return;
+
+    var cfg = document.getElementById('chatWidgetConfig');
+    if (!cfg) return;
+
+    var s = document.createElement('script');
+    for (var i = 0; i < cfg.attributes.length; i++) {
+        var a = cfg.attributes[i];
+        if (a.name === 'type' || a.name === 'id') continue;
+        if (a.name === 'data-src') { s.src = a.value; continue; }
+        s.setAttribute(a.name, a.value);
+    }
+    s.defer = true;
+    document.body.appendChild(s);
+})();
+</script>
 
     <!-- Push opt-in prompt. Hidden by default; shown only by the logic below. -->
     <div class="push-prompt" id="pushPrompt" role="dialog" aria-modal="false"
