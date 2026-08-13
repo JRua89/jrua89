@@ -6,95 +6,117 @@
     <title>Offline | John Rua</title>
     <meta name="robots" content="noindex">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <meta name="theme-color" content="#0a0a0a">
+    <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f1011" media="(prefers-color-scheme: dark)">
+
+    <!-- Match the theme the visitor chose on the main site, before first paint. -->
+    <script>
+    (function () {
+        var t;
+        try { t = localStorage.getItem('theme'); } catch (err) { /* private mode */ }
+        if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+    })();
+    </script>
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* Self-contained on purpose: this page has to render when the network
+           is gone, so it depends on nothing but the precached fonts. */
+        @font-face {
+            font-family: 'Space Grotesk';
+            src: url('/fonts/space-grotesk-latin.woff2') format('woff2');
+            font-weight: 300 700; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'JetBrains Mono';
+            src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+            font-weight: 100 800; font-style: normal; font-display: swap;
+        }
 
         :root {
-            --bg-dark: #0a0a0a;
-            --bg-card: #141414;
-            --accent: #00ff87;
-            --accent-secondary: #00d4ff;
-            --text-primary: #ffffff;
-            --text-secondary: #b3b3b3;
-            --gradient: linear-gradient(135deg, #00ff87 0%, #00d4ff 100%);
+            --bg: #0f1011; --surface: #141516; --text: #f2f3f2;
+            --text-2: rgba(242, 243, 242, .62); --text-3: rgba(242, 243, 242, .42);
+            --line: rgba(255, 255, 255, .09); --line-2: rgba(255, 255, 255, .16);
+            --accent: #c4ec00; --accent: oklch(0.85 0.18 130); --accent-ink: #0f1011;
+            --sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            --mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+        }
+        [data-theme="light"] {
+            --bg: #f6f5f2; --surface: #ffffff; --text: #14150f;
+            --text-2: rgba(20, 21, 15, .68); --text-3: rgba(20, 21, 15, .5);
+            --line: rgba(20, 21, 15, .12); --line-2: rgba(20, 21, 15, .22);
+            --accent: #1f7a3d; --accent: oklch(0.52 0.15 145); --accent-ink: #ffffff;
         }
 
+        * { box-sizing: border-box; }
         body {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            text-align: center;
+            margin: 0; min-height: 100vh;
+            display: flex; align-items: center; justify-content: center; padding: 24px;
+            background: var(--bg); color: var(--text);
+            font-family: var(--sans); -webkit-font-smoothing: antialiased;
         }
 
-        .card {
-            max-width: 420px;
-            padding: 40px 28px;
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
+        .panel {
+            width: 100%; max-width: 460px;
+            background: var(--surface); border: 1px solid var(--line); padding: 36px 32px;
         }
 
+        .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
         .mark {
-            width: 72px;
-            height: 72px;
-            margin: 0 auto 24px;
-            border-radius: 50%;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 26px;
-            color: #0a0a0a;
-            letter-spacing: 1px;
+            width: 28px; height: 28px; flex: none;
+            border: 1px solid var(--accent); color: var(--accent);
+            font: 700 11px/26px var(--mono); text-align: center;
         }
+        .brand-name { font: 500 13px var(--sans); letter-spacing: -.01em; }
 
-        h1 {
-            font-size: 22px;
-            margin-bottom: 12px;
+        .eyebrow { font: 400 12px var(--mono); color: var(--accent); margin: 0 0 14px; }
+        h1 { margin: 0 0 12px; font-size: 30px; line-height: 1.1; letter-spacing: -.03em; font-weight: 700; }
+        p { margin: 0 0 24px; color: var(--text-2); font-size: 15px; line-height: 1.65; }
+
+        .row { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn {
+            display: inline-block; border: 0; cursor: pointer; text-align: center;
+            font: 500 13px var(--sans); padding: 13px 22px; border-radius: 0;
+            transition: filter .15s, border-color .15s, color .15s;
+            text-decoration: none;
         }
-
-        p {
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-
-        button {
-            font: inherit;
-            font-weight: 600;
-            padding: 12px 28px;
-            border: 0;
-            border-radius: 999px;
-            background: var(--gradient);
-            color: #0a0a0a;
-            cursor: pointer;
-        }
-
-        button:hover { opacity: 0.9; }
+        .btn-accent { background: var(--accent); color: var(--accent-ink); }
+        .btn-accent:hover { filter: brightness(1.08); }
+        .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--line-2); }
+        .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
         .status {
-            margin-top: 16px;
-            font-size: 13px;
-            color: var(--text-secondary);
-            min-height: 1.2em;
+            margin: 20px 0 0; padding-top: 18px; border-top: 1px solid var(--line);
+            font: 400 12px var(--mono); color: var(--text-3); min-height: 1.4em;
+        }
+
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: .01ms !important; }
         }
     </style>
 </head>
 <body>
-    <main class="card">
-        <div class="mark" aria-hidden="true">JR</div>
-        <h1>You're offline</h1>
-        <p>This page isn't cached yet. Reconnect and it'll load right up &mdash; the rest of the site is still available offline.</p>
-        <button type="button" id="retry">Try again</button>
-        <p class="status" id="status" role="status"></p>
+    <main class="panel">
+        <div class="brand">
+            <div class="mark" aria-hidden="true">JR</div>
+            <span class="brand-name">John Rua</span>
+        </div>
+
+        <p class="eyebrow">~/johnrua $ ping</p>
+        <h1>You're offline.</h1>
+        <p>This page isn't cached yet. Reconnect and it'll load right up &mdash; the rest of the
+            site is still available offline.</p>
+
+        <div class="row">
+            <button type="button" class="btn btn-accent" id="retry">Try again</button>
+            <a class="btn btn-ghost" href="/">Back to home</a>
+        </div>
+
+        <p class="status" id="status" role="status">● no connection</p>
     </main>
 
     <script>
@@ -106,14 +128,16 @@
 
         function render() {
             if (navigator.onLine) {
-                status.textContent = 'Back online — reloading…';
+                status.textContent = '● back online — reloading…';
                 location.reload();
             } else {
-                status.textContent = 'Still no connection.';
+                status.textContent = '● still no connection';
             }
         }
 
         window.addEventListener('online', render);
+        window.addEventListener('offline', render);
+        render();
     </script>
 </body>
 </html>
