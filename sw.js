@@ -4,7 +4,7 @@
    - Handles Web Push + notification clicks
 */
 
-const VERSION = 'v2';
+const VERSION = 'v3';
 const PRECACHE = `jr-precache-${VERSION}`;
 const RUNTIME = `jr-runtime-${VERSION}`;
 
@@ -20,6 +20,8 @@ const PRECACHE_URLS = [
   '/email.min.js',
   '/john-rua-resume.pdf',
   '/og-image.png',
+  '/fonts/space-grotesk-latin.woff2',
+  '/fonts/jetbrains-mono-latin.woff2',
   '/favicon.ico',
   '/favicon-32x32.png',
   '/android-chrome-192x192.png',
