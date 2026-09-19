@@ -1322,28 +1322,6 @@ if (!document.getElementById('modal-root')) {
   src="https://corner-intl-medline-hits.trycloudflare.com/widget/firstreply.js?v=1785608163"
   defer></script>
 
-(function () {
-    // Herd serves the widget host as *.test; the embed API is on localhost.
-    var host = location.hostname;
-    var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '[::1]' ||
-                  /\.(test|localhost)$/.test(host);
-
-    if (!isLocal) return;
-
-    var cfg = document.getElementById('chatWidgetConfig');
-    if (!cfg) return;
-
-    var s = document.createElement('script');
-    for (var i = 0; i < cfg.attributes.length; i++) {
-        var a = cfg.attributes[i];
-        if (a.name === 'type' || a.name === 'id') continue;
-        if (a.name === 'data-src') { s.src = a.value; continue; }
-        s.setAttribute(a.name, a.value);
-    }
-    s.defer = true;
-    document.body.appendChild(s);
-})();
-</script>
 
     <!-- Push opt-in prompt. Hidden by default; shown only by the logic below. -->
     <div class="push-prompt" id="pushPrompt" role="dialog" aria-modal="false"
